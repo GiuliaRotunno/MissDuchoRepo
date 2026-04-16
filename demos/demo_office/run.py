@@ -1,4 +1,4 @@
-from ducho.runner.Runner import MultimodalFeatureExtractor
+from ducho.runner.Runner import MultimodalFeatureExtractor, MultimodalFeatureImputator
 import torch
 import torchvision.models as models
 from collections import OrderedDict
@@ -27,7 +27,8 @@ def main():
     set_seed()
     extractor_obj = MultimodalFeatureExtractor(config_file_path='./demos/demo_office/config.yml')
     extractor_obj.execute_extractions()
-
+    imputator_obj = MultimodalFeatureImputator(config_file_path='./demos/demo_office/config.yml')
+    imputator_obj.execute_imputations()                                                          
 
 if __name__ == '__main__':
     if not os.path.exists('./demos/demo_office/MMFashion.pt'):
@@ -48,3 +49,5 @@ if __name__ == '__main__':
         torch.save(resnet50, './demos/demo_office/MMFashion.pt')
         os.remove('./demos/demo_office/MMFashion.pth')
     main()
+
+# PYTHONPATH=. python demos/demo_office/run.py

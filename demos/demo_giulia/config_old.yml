@@ -1,0 +1,61 @@
+dataset_path: ./local/data/demo_giulia
+gpu list: 0
+
+visual:
+  items:
+     input_path: images
+     output_path: visual_embeddings
+     model: [ { model_name: ResNet50,  output_layers: avgpool, reshape: [224, 224], preprocessing: zscore, backend: torch, batch_size: 1} ]
+         
+     imputation : [
+                    { method_name: zeros, missing_file: missing_visual.tsv},
+                    { method_name: random, missing_file: missing_visual.tsv, seed: 42},
+                    { method_name: mean, missing_file: missing_visual.tsv},
+                    { method_name: neighmean, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 40},
+                    { method_name: featprop, missing_file: missing_visual.tsv, train_path: train.tsv,  top_k: 10, layers: 1},
+                    { method_name: perspagerank, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, alpha: 0.1},
+                    { method_name: heat, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, time: 5.0},
+     ]
+
+
+textual:
+  items:
+     input_path: meta.tsv
+     output_path: textual_embeddings
+     item_column: asin
+     text_column: description
+     model: [ { model_name: sentence-transformers/all-mpnet-base-v2,  output_layers: 1, clear_text: False, backend: sentence_transformers, batch_size: 32} ]
+
+     imputation : [
+                    { method_name: zeros, missing_file: missing_textual.tsv},
+                    { method_name: random, missing_file: missing_visual.tsv, seed: 42},
+                    { method_name: mean, missing_file: missing_textual.tsv},
+                    { method_name: neighmean, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 80},
+                    { method_name: featprop, missing_file: missing_visual.tsv, train_path: train.tsv,  top_k: 10, layers: 1},
+                    { method_name: perspagerank, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, alpha: 0.1},
+                    { method_name: heat, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, time: 5.0},
+     ]
+
+visual_textual:
+   items:
+     input_path: { visual: images, textual: meta.tsv }
+     output_path: { visual: visual_embeddings, textual: textual_embeddings}
+     item_column: asin
+     text_column: description
+     model: [ { model_name: openai/clip-vit-base-patch16, output_layers: 1, backend: transformers, batch_size: 64} ]
+          
+     imputation : [
+                    { method_name: zeros, missing_file: missing_visual_textual.tsv},
+                    { method_name: random, missing_file: missing_textual.tsv, seed: 42},
+                    { method_name: mean, missing_file: missing_textual.tsv}, 
+                    { method_name: neighmean, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10},
+                    { method_name: featprop, missing_file: missing_visual.tsv, train_path: train.tsv,  top_k: 10, layers: 1},
+                    { method_name: perspagerank, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, alpha: 0.1},
+                    { method_name: heat, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 10, layers: 1, time: 5.0},
+                    { method_name: autoenc, missing_visual_file: missing_visual.tsv , missing_textual_file: missing_textual.tsv},
+                    { method_name: graphautoenc,  missing_visual_file: missing_visual.tsv , missing_textual_file: missing_textual.tsv, train_path: train.tsv, top_k: 20},   
+     ]
+
+                          
+
+#PYTHONPATH=. python demos/demo_giulia/run.py 

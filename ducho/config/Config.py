@@ -140,7 +140,7 @@ class Config:
         if isinstance(data, dict):
             for key in data.keys():
                 # the model dict follow a particular configuration that is necessary not to change
-                if key != 'model':
+                if key != 'model' and key != 'imputation': #new
                     value = self.__clean_dict(data[key])
                     data.update({key: value})
         if isinstance(data, list):
@@ -368,7 +368,109 @@ class Config:
                     model.update({library_key: ['torch', 'transformers']})
 
         return models
+    
 
+    def get_imputations(self): # get imputation configurations, returns a dictionary containing imputation configurations.
+        imputations_dict = {key: copy.deepcopy(self._data_dict[key]) for key in ['imputation'] if key in self._data_dict}
+        return imputations_dict
+    
+    def has_config_imputation(self, mode, modality): #Check if the configuration contains values for the specified mode and modality
+
+        if mode in self._data_dict['imputation'] and modality in self._data_dict[mode]:
+            local_dict = self._data_dict[mode][modality]
+            # check if local dict has input/output/model
+            if 'input_path' in local_dict and 'output_path' in local_dict and 'methods' in local_dict:
+                # in this case it's all right but must be checked that the values are not empty
+                input_value = local_dict['input_path']
+                output_value = local_dict['output_path']
+                methods_value = local_dict['methods']
+                if input_value is not None and output_value is not None and methods_value is not None:
+                    return True
+        return False
+
+    def paths_for_imputation(self, mode, modality): #Get the working environments for imputation. Returns a dictionary containing input and output paths.
+        
+        relative_input_path = self._data_dict['imputation'][mode][modality]['input_path']
+        relative_output_path = self._data_dict['imputation'][mode][modality]['output_path']
+
+        return {'input_path': os.path.join(self._data_dict['dataset_path'], relative_input_path), 'output_path': os.path.join(self._data_dict['dataset_path'], relative_output_path)}
+
+    def paths_for_multiple_imputation(self, mode, modality): #Get the working environments for multiple imputation. Returns a ictionary containing input and output paths.
+  
+        relative_input_path = self._data_dict['imputation'][mode][modality]['input_path']
+        relative_output_path = self._data_dict['imputation'][mode][modality]['output_path']
+
+        return { 'input_path': {k: os.path.join(self._data_dict['dataset_path'], relative_input_path[k])  for k, _ in relative_input_path.items()},
+                 'output_path': {k: os.path.join(self._data_dict['dataset_path'], relative_output_path[k])  for k, _ in relative_input_path.items()}}
+
+    def get_methods_list(self, mode, modality): #Get the list of methods.
+        """
+        Get the imputation methods for the specified mode and modality.
+        Args: mode (str): 'unimodal', 'crossmodal'
+              modality (str): 'visual', 'textual', or 'visual_textual'        
+        Returns: list: A list of imputation method dictionaries.
+        """
+        methods = self._data_dict['imputation'][mode][modality]['methods']
+        return methods
+
+    def validate_methods(self, methods, modality):  #Validate methods
+        """
+        Validate the imputation methods for the specified modality.
+        Args: methods [list(dict)]:  list of imputation method dictionaries
+              modality (str): 'visual', 'textual', or 'visual_textual'        
+        Returns: list: A list of imputation method dictionaries.
+        """
+        #Validazione metodi
+        for method in methods:
+            if 'method_name' not in method:
+                raise ValueError(f"Imputation method missing 'method_name' field: {method}")
+            if method['method_name'] in ['random', 'autoenc', 'graphautoenc', 'vigan', 'smil', 'mmin', 'varautoenc', 'vargraphautoenc', 'dicmor'] and 'seed' not in method:
+                logger.warning("Imputation method missing 'seed' parameter, using default.")
+            if method['method_name'] in ['neighmean', 'featprop', 'perspagerank', 'heat', 'graphautoenc', 'vargraphautoenc']:
+                if 'train_path' not in method:
+                    raise ValueError(f"Imputation method {method['method_name']} missing 'train_path' field.")
+                if 'top_k' not in method:
+                    logger.warning(f"Imputation method {method['method_name']} missing 'top_k' parameter, using default.")
+            if method['method_name'] in ['featprop', 'perspagerank', 'heat'] and 'layers' not in method:
+                    logger.warning(f"{method['method_name']} imputation missing 'layers' parameter, using default.")
+            if method['method_name']=='perspagerank' and 'alpha' not in method: 
+                logger.warning(f"Perspagerank imputation method missing 'alpha' parameter, using default alpha.")  
+            if method['method_name']=='heat' and 'time' not in method: 
+                logger.warning(f"Heat imputation method missing 'time' parameter, using default time.")       
+            if method['method_name'] in ['autoenc', 'graphautoenc', 'vigan', 'smil', 'mmin', 'varautoenc', 'vargraphautoenc', 'dicmor']:
+                if modality not in ['visual_textual']:
+                    logger.warning(f"Imputation method {method['method_name']} is only valid for visual_textual modality.")
+                else: 
+                    if 'missing_visual_file' not in method:
+                        if 'missing_percentage_visual' not in method:
+                           raise ValueError(f"Imputation method missing 'missing_visual_file' field")
+                    if 'missing_textual_file' not in method:
+                        if 'missing_percentage_textual' not in method:
+                           raise ValueError(f"Imputation method missing 'missing_textual_file' field")
+                    if  method['method_name'] in ['autoenc', 'graphautoenc', 'varautoenc', 'vargraphautoenc', 'smil', 'mmin', 'dicmor'] and 'num_epochs' not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing 'mun_epochs' parameter, using default.")
+                    if 'learning_rate' not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing 'learning_rate' parameter, using default.")
+                    if 'batch_size' not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing 'batch_size' parameter, using default.")
+                    if  method['method_name'] in ['varautoenc', 'vargraphautoenc'] and 'beta_visual' not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing 'beta_visual' parameter, using default.")
+                    if  method['method_name'] in ['varautoenc', 'vargraphautoenc'] and 'beta_textual' not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing 'beta_textual' parameter, using default.")
+                    if  method['method_name']=='vigan' and ('num_epochs_cyclegan' or 'num_epochs_ae' or 'num_epochs_joint' or 'beta1' or 'lambda_A' or 'lambda_B' or 'lambda_idt' or 'lambda_C' or 'lambda_D' or 'n_iter_G' or 'n_iter_D') not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing additional parameters, using default.")
+                    if  method['method_name']=='smil' and ('alpha' or 'beta') not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing additional parameters, using default.")
+                    if  method['method_name']=='mmin' and ('n_blocks' or 'dropout' or 'mse_weight' or 'cycle_weight') not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing additional parameters, using default.")
+                    if  method['method_name']=='dicmor' and ('log_p_weight' or 'n_flow' or 'n_block' or 'rcan_blocks') not in method:
+                        logger.warning(f"Imputation method {method['method_name']} missing additional parameters, using default.")
+       
+            else:
+                if 'missing_file' not in method:
+                    if 'missing_percentage' not in method:
+                        raise ValueError(f"Imputation method {method['method_name']} missing 'missing_file' field.")
+        return methods  
 
 # Configure custom loguru levels
 logger.configure(

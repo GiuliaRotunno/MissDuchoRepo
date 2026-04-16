@@ -1,0 +1,36 @@
+dataset_path: ./local/data/demo_giulia/test
+gpu list: 0
+
+imputation: 
+#     unimodal:  
+#          visual:
+#               input_path: 'non_masked_visual_embeddings'
+#               output_path: 'imputed/visual_embeddings'                                               
+#               methods: [
+                          #{ method_name: neighmean, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 3},
+                          #{ method_name: featprop, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 3, layers: 2},
+                          #{ method_name: perspagerank, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 1, layers: 2, alpha: 1},
+                          #{ method_name: heat, missing_file: missing_visual.tsv, train_path: train.tsv, top_k: 1, layers: 2, time: 1},
+#               ]
+#          textual:
+#               input_path: 'non_masked_textual_embeddings'
+#               output_path: 'imputed/textual_embeddings'                                               
+#               methods: [
+                          #{ method_name: neighmean, missing_file: missing_textual.tsv, train_path: train.tsv, top_k: 3},
+                          #{ method_name: featprop, missing_file: missing_textual.tsv, train_path: train.tsv, top_k: 3, layers: 2},
+                          #{ method_name: perspagerank, missing_file: missing_textual.tsv, train_path: train.tsv, top_k: 1, layers: 2, alpha: 1},
+                          #{ method_name: heat, missing_file: missing_textual.tsv, train_path: train.tsv, top_k: 1, layers: 2, time: 1},
+#               ]
+
+     crossmodal:
+          visual_textual:
+               input_path: { visual: 'non_masked_visual_embeddings', textual: 'non_masked_textual_embeddings'}
+               output_path: { visual: 'imputed/visual_embeddings', textual: 'imputed/textual_embeddings'}
+               methods:  [
+                           { method_name: autoenc, missing_visual_file: missing_visual.tsv, missing_textual_file: missing_textual.tsv, seed: 42},
+                           #{ method_name: graphautoenc, missing_visual_file: missing_visual.tsv , missing_textual_file: missing_textual.tsv, train_path: train.tsv, top_k: 1, seed: 42},
+                           #{ method_name: vigan, missing_visual_file: missing_visual.tsv , missing_textual_file: missing_textual.tsv, seed: 42},
+                           #{ method_name: smil, missing_visual_file: missing_visual.tsv, missing_textual_file: missing_textual.tsv, seed: 42},
+                           #{ method_name: mmin, missing_visual_file: missing_visual.tsv, missing_textual_file: missing_textual.tsv, seed: 42},             
+               ]
+

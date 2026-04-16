@@ -1,9 +1,7 @@
 # data taken from: https://cseweb.ucsd.edu/~jmcauley/datasets/amazon/links.html
 import os.path
 import time
-
 from tqdm import tqdm
-
 import pandas as pd
 import gzip
 import requests
@@ -47,21 +45,27 @@ def download_dataset(file_name, save_path):
                     bar.update(len(chunk))
 
 
-folder = 'datasets'
-name = 'Baby'
+#folder = './local/data/demo_paper/baby' 
+#name = 'Baby'
+#folder = './local/data/demo_paper/beauty' 
+#name = 'Beauty'
+folder = './local/data/demo_paper/office' 
+name = 'Office_Products'
+#folder = './local/data/demo_paper/sports' 
+#name = 'Sports_and_Outdoors'
+
 core = 5
 
-dataset_path = f'{folder}/{name}'
-if not os.path.exists(dataset_path):
-    os.mkdir(dataset_path)
+if not os.path.exists(folder):
+    os.makedirs(folder)
 
 # download json
 for file_name in [f'reviews_{name}_5.json.gz', f'meta_{name}.json.gz']:
-    if not os.path.exists(f'{dataset_path}/{file_name}'):
-        download_dataset(file_name, dataset_path)
+    if not os.path.exists(f'{folder}/{file_name}'):
+        download_dataset(file_name, folder)
 
 # load reviews
-reviews = getDF(f'{dataset_path}/reviews_{name}_{core}.json.gz')[['reviewerID', 'asin', 'overall']]
+reviews = getDF(f'{folder}/reviews_{name}_{core}.json.gz')[['reviewerID', 'asin', 'overall']]
 
 # check reviewerID, asin, and overall are not nan and remove duplicates
 reviews = reviews[reviews['reviewerID'].notna()]
@@ -70,7 +74,7 @@ reviews = reviews[reviews['overall'].notna()]
 reviews = reviews.drop_duplicates()
 
 # load meta
-meta = getDF(f'{dataset_path}/meta_{name}.json.gz')[['asin', 'description', 'imUrl']]
+meta = getDF(f'{folder}/meta_{name}.json.gz')[['asin', 'description', 'imUrl']]
 
 # check asin, description, and imUrl are not nan
 meta = meta[meta['asin'].notna()]
@@ -93,10 +97,10 @@ items_nan_description = set(meta[meta['description'].isna()]['asin'].tolist()).u
         meta[meta['description'].notna()]['description'].str.contains('nan|Nan|NaN|naN|n\/a|N\/A', regex=True)][
         'asin'].tolist()))
 items_nan_url = set(meta[meta['imUrl'].isna()]['asin'].tolist()).union(set(meta[meta['imUrl'].notna()][
-                                                                               meta[meta['imUrl'].notna()][
-                                                                                   'imUrl'].str.contains(
-                                                                                   'nan|Nan|NaN|naN|n\/a|N\/A',
-                                                                                   regex=True)]['asin'].tolist()))
+                                                                            meta[meta['imUrl'].notna()][
+                                                                                'imUrl'].str.contains(
+                                                                                'nan|Nan|NaN|naN|n\/a|N\/A',
+                                                                                regex=True)]['asin'].tolist()))
 items_empty_description = set(
     meta[meta['description'].notna()][meta[meta['description'].notna()]['description'].str.len() == 0][
         'asin'].tolist())
@@ -115,27 +119,9 @@ print(f'Empty url: {len(items_empty_url)}')
 missing_visual = items_nan_url.union(items_empty_url)
 missing_textual = items_nan_description.union(items_empty_description)
 
-if not os.path.exists(f'{folder}/{name}/images/'):
-    os.makedirs(f'{folder}/{name}/images/')
-
-images = []
-with tqdm(total=len(meta)) as t:
-    for index, row in meta.iterrows():
-        if pd.notna(row['imUrl']):
-            output = download_image(row['imUrl'], row['asin'], f'{folder}/{name}/images/{row["asin"]}.jpg')
-            if output is None:
-                missing_visual.add(row['asin'])
-            images.append(output)
-            t.update()
-
-broken_urls = set([im for im in images if im is None])
-print(f'Broken url: {len(broken_urls)}')
-remaining_items = remaining_items.intersection(set([im for im in images if im]))
-print(f'Remaining items: {len(remaining_items)}')
-
 # save original df
-meta.to_csv(f'{folder}/{name}/original_meta.tsv', sep='\t', index=None)
-reviews.to_csv(f'{folder}/{name}/original_reviews.tsv', sep='\t', index=None, header=None)
+meta.to_csv(f'{folder}/original_meta.tsv', sep='\t', index=None)
+reviews.to_csv(f'{folder}/original_reviews.tsv', sep='\t', index=None, header=None)
 
 meta = meta[meta['asin'].isin(all_items.difference(missing_textual))]
 reviews = reviews[reviews['asin'].isin(remaining_items)]
@@ -151,19 +137,36 @@ print(len(meta[meta['description'].str.contains('N\/A')]))
 print(f'Remaining users: {reviews["reviewerID"].nunique()}')
 print(f'Remaining interactions: {len(reviews)}')
 
-# save final df
-meta.to_csv(f'{folder}/{name}/final_meta.tsv', sep='\t', index=None)
-reviews.to_csv(f'{folder}/{name}/final_reviews.tsv', sep='\t', index=None, header=None)
+if not os.path.exists(f'{folder}/images/'):
+    os.makedirs(f'{folder}/images/')
 
-meta = pd.read_csv(f'{folder}/{name}/final_meta.tsv', sep='\t')
-print(len(meta[meta['description'].isna()]))
-print(len(meta[meta['description'].str.len() == 0]))
+images = []
+with tqdm(total=len(meta)) as t:
+    for index, row in meta.iterrows():
+        if pd.notna(row['imUrl']):
+            output = download_image(row['imUrl'], row['asin'], f'{folder}/images/{row["asin"]}.jpg')
+            if output is None:
+                missing_visual.add(row['asin'])
+            images.append(output)
+            t.update()
+
+broken_urls = set([im for im in images if im is None])
+print(f'Broken url: {len(broken_urls)}')
+remaining_items = remaining_items.intersection(set([im for im in images if im]))
+print(f'Remaining items: {len(remaining_items)}')
+
+if len(broken_urls) > 0:
+    meta = meta[~meta['asin'].isin(missing_visual)]
+    reviews = reviews[~reviews['asin'].isin(missing_visual)]
+
+meta.to_csv(f'{folder}/meta.tsv', sep='\t', index=None)
+reviews.to_csv(f'{folder}/reviews.tsv', sep='\t', index=None, header=None)
 
 # save missing items
-pd.DataFrame(list(missing_visual)).to_csv(f'{folder}/{name}/missing_visual.tsv', sep='\t',
-                                          index=None, header=None)
-pd.DataFrame(list(missing_textual)).to_csv(f'{folder}/{name}/missing_textual.tsv', sep='\t',
-                                           index=None,header=None)
+pd.DataFrame(list(missing_visual)).to_csv(f'{folder}/missing_visual.tsv', sep='\t',
+                                        index=None, header=None)
+pd.DataFrame(list(missing_textual)).to_csv(f'{folder}/missing_textual.tsv', sep='\t',
+                                        index=None,header=None)
 
 
 

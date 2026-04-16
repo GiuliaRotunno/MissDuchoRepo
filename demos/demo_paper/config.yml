@@ -1,0 +1,74 @@
+dataset_path: ./local/data/demo_paper/sports
+gpu list: 0
+
+#visual:
+#  items:
+#    input_path: images
+#    output_path: extracted/visual_embeddings
+#    model: [ { model_name: ResNet50,  output_layers: avgpool, reshape: [224, 224], preprocessing: zscore, backend: torch, batch_size: 32}]
+
+#textual:
+#  items:
+#    input_path: meta.tsv
+#    output_path: extracted/textual_embeddings
+#    item_column: asin
+#    text_column: description
+#    model: [ { model_name: sentence-transformers/all-mpnet-base-v2,  output_layers: 1, clear_text: False, backend: sentence_transformers, batch_size: 32},]
+
+imputation:  
+  #unimodal:  
+    #visual:                
+      #input_path: 'extracted/visual_embeddings/torch/ResNet50/avgpool'  
+      #output_path: 'imputed/visual_embeddings/mp10'                  
+      #methods: [        
+                #{ method_name: zeros, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: random, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: mean, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: neighmean, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100},
+                #{ method_name: featprop, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10}, 
+                #{ method_name: perspagerank, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10, alpha: 0.1}, 
+                #{ method_name: heat, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10, time: 5.0}, 
+      #]
+    
+    #textual:
+      #input_path: 'extracted/textual_embeddings/sentence_transformers/sentence-transformers/all-mpnet-base-v2/1'  
+      #output_path: 'imputed/textual_embeddings/mp10'                                    
+      #methods: [
+                #{ method_name: zeros, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: random, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: mean, missing_percentage: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: neighmean, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100},
+                #{ method_name: featprop, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10}, 
+                #{ method_name: perspagerank, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10, alpha: 0.1}, 
+                #{ method_name: heat, missing_percentage: [0.1], items_file: items.tsv, seed: 42, train_path: reviews.tsv, top_k: 100, layers: 10, time: 5.0}, 
+      #]
+
+  crossmodal: 
+    visual_textual:
+      input_path: { visual: 'extracted/visual_embeddings/torch/ResNet50/avgpool', textual: 'extracted/textual_embeddings/sentence_transformers/sentence-transformers/all-mpnet-base-v2/1'}   
+      output_path: { visual: 'imputed/visual_embeddings/mp10', textual: 'imputed/textual_embeddings/mp10'}                                                                       
+      methods:  [
+                #{ method_name: autoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: varautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: graphautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, train_path: reviews.tsv, top_k: 100, seed: 42},
+                #{ method_name: vargraphautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, train_path: reviews.tsv, top_k: 100, seed: 42},
+                #{ method_name: vigan, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: smil, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42},
+                #{ method_name: mmin, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42},  
+                #{ method_name: dicmor, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 100, learning_rate: 0.0001, batch_size: 32, log_p_weight: 0.01, n_flow: 16, n_block: 1, rcan_blocks: 10}   #office
+                #{ method_name: dicmor, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 100, learning_rate: 0.00005, batch_size: 32, log_p_weight: 0.001, n_flow: 16, n_block: 1, rcan_blocks: 10}   #baby
+
+                #new parameters
+                #{ method_name: autoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 1000, learning_rate: 0.01, batch_size: 32},
+                #{ method_name: varautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 1000, learning_rate: 0.01, batch_size: 32, beta_visual: 0.01, beta_textual: 1.0},
+                #{ method_name: graphautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, train_path: reviews.tsv, top_k: 50, seed: 42, num_epochs: 1000, learning_rate: 1e-4, batch_size: 32},
+                #{ method_name: vargraphautoenc, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, train_path: reviews.tsv, top_k: 50, seed: 42, num_epochs: 1000, learning_rate: 1e-4, batch_size: 32, beta_visual: 1e-3, beta_textual: 1e-3},
+                #{ method_name: vigan, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs_cyclegan: 5, num_epochs_ae: 5, num_epochs_joint: 40, learning_rate: 0.0002, batch_size: 64, beta1: 0.5, lambda_A: 10.0, lambda_B: 10.0, lambda_idt: 0.5, lambda_C: 1.0, lambda_D: 1.0, n_iter_G: 2, n_iter_D: 1},
+                { method_name: smil, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 200, learning_rate: 0.0001, batch_size: 32, alpha: 1.0, beta: 1.0},  #tutti
+                #{ method_name: smil, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 60, learning_rate: 0.001, batch_size: 32, alpha: 1.0, beta: 1.0},
+                #{ method_name: mmin, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 100, learning_rate: 0.0002, batch_size: 128, n_blocks: 3, dropout: 0.3, mse_weight: 1.0, cycle_weight: 1.0},  
+                #{ method_name: dicmor, missing_percentage_visual: [0.1], missing_percentage_textual: [0.1], items_file: items.tsv, seed: 42, num_epochs: 8, learning_rate: 0.0001, batch_size: 16, log_p_weight: 0.1, n_flow: 32, n_block: 1, rcan_blocks: 20}  
+      ]
+
+
+# PYTHONPATH=. python demos/demo_paper/run.py

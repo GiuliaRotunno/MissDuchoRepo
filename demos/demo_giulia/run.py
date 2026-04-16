@@ -1,4 +1,4 @@
-from ducho.runner.Runner import MultimodalFeatureExtractor
+from ducho.runner.Runner import MultimodalFeatureExtractor, MultimodalFeatureImputator
 import torch
 import torchvision.models as models
 from collections import OrderedDict
@@ -25,14 +25,15 @@ def set_seed(seed = 42):
 
 def main():
     set_seed()
-    extractor_obj = MultimodalFeatureExtractor(config_file_path='./demos/demo_music/config.yml')
+    extractor_obj = MultimodalFeatureExtractor(config_file_path='./demos/demo_giulia/config.yml')
     extractor_obj.execute_extractions()
-
+    imputator_obj = MultimodalFeatureImputator(config_file_path='./demos/demo_giulia/config.yml') #new
+    imputator_obj.execute_imputations()                                                           #new
 
 if __name__ == '__main__':
-    if not os.path.exists('./demos/demo_music/MMFashion.pt'):
-        gdown.download(f'https://drive.google.com/uc?id=1LmC4aKiOY3qmm9qo6RNDU5v_o-xDCAdT', './demos/demo_music/MMFashion.pth', quiet=False)
-        model = torch.load('./demos/demo_music/MMFashion.pth', map_location=torch.device('cpu'))
+    if not os.path.exists('./demos/demo_giulia/MMFashion.pt'):
+        gdown.download(f'https://drive.google.com/uc?id=1LmC4aKiOY3qmm9qo6RNDU5v_o-xDCAdT', './demos/demo_giulia/MMFashion.pth', quiet=False)
+        model = torch.load('./demos/demo_giulia/MMFashion.pth', map_location=torch.device('cpu'))
         resnet50 = models.resnet50(pretrained=False)
         state_dict = model['state_dict']
         od = OrderedDict()
@@ -45,6 +46,8 @@ if __name__ == '__main__':
         od['fc.weight'] = fc.weight
         od['fc.bias'] = fc.bias
         resnet50.load_state_dict(od)
-        torch.save(resnet50, './demos/demo_music/MMFashion.pt')
-        os.remove('./demos/demo_music/MMFashion.pth')
+        torch.save(resnet50, './demos/demo_giulia/MMFashion.pt')
+        os.remove('./demos/demo_giulia/MMFashion.pth')
     main()
+
+# PYTHONPATH=. python demos/demo_giulia/run.py

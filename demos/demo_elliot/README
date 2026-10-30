@@ -1,0 +1,2 @@
+The `demo_elliot` demo is used to run imputation experiments starting from a dataset with missing modalities.
+The imputed embeddings can then be used downstream in a recommender system to compute recommendation performance.

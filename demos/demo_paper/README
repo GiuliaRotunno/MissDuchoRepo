@@ -1,0 +1,3 @@
+The `demo_paper` demo is used to run imputation experiments starting from a complete dataset,
+with a user-defined percentage of missing modalities.
+It produces an imputation report that includes the computation of reconstruction errors.

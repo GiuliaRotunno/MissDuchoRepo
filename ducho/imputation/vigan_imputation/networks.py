@@ -1,13 +1,16 @@
-# VIGAN Networks adattato per vettori di features https://github.com/chaoshangcs/VIGAN
+# VIGAN networks adapted for feature vectors from https://github.com/chaoshangcs/VIGAN
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class AutoEncoder(nn.Module): #AutoEncoder Multimodale adattato dal codice VIGAN originale -> Modifiche: Rimosso view(-1, 784) perché lavoriamo già con vectors, dimensioni parametrizzate (input_A, input_B) invece di hardcoded 784, stesso schema di layer dell'originale
+# Multimodal AutoEncoder
+# Changes: Removed view(-1, 784) because we already work with vectors, parameterized dimensions (input_A, input_B) instead of hardcoded, same layer scheme as the original
+class AutoEncoder(nn.Module): 
+
     def __init__(self, input_A, input_B, hidden_dim=400, shared_dim=200, dropout=0.5):
         super(AutoEncoder, self).__init__()
-        self.layer1_1 = nn.Linear(input_A, hidden_dim, bias=False) # Encoder per modalità A (visual)
-        self.layer1_2 = nn.Linear(input_B, hidden_dim, bias=False) # Encoder per modalità B (textual)
+        self.layer1_1 = nn.Linear(input_A, hidden_dim, bias=False)  # Encoder for modality A (visual)
+        self.layer1_2 = nn.Linear(input_B, hidden_dim, bias=False)  # Encoder for modality B (textual)
         # Shared layers
         self.layer2 = nn.Linear(hidden_dim * 2, 500)
         self.layer3 = nn.Linear(500, shared_dim)
@@ -19,7 +22,8 @@ class AutoEncoder(nn.Module): #AutoEncoder Multimodale adattato dal codice VIGAN
         self.layer6_2 = nn.Linear(500, input_B)
         self.drop = dropout
 
-    def forward(self, x1, x2):  #Forward pass come nell'originale, ma senza reshape
+    # Forward pass
+    def forward(self, x1, x2): 
         # Encode
         x1 = F.dropout(F.relu(self.layer1_1(x1)), self.drop, training=self.training)  #x1: visual features [batch, input_A]
         x2 = F.dropout(F.relu(self.layer1_2(x2)), self.drop, training=self.training)  #x2: textual features [batch, input_B]
@@ -29,12 +33,13 @@ class AutoEncoder(nn.Module): #AutoEncoder Multimodale adattato dal codice VIGAN
         x = F.dropout(F.relu(self.layer4(x)), self.drop, training=self.training)
         # Decode to both modalities
         out1 = F.relu(self.layer5_1(x))
-        out1 = torch.sigmoid(self.layer6_1(out1)) #out1: reconstructed visual [batch, input_A]
+        out1 = torch.sigmoid(self.layer6_1(out1))     # out1: reconstructed visual [batch, input_A]
         out2 = F.relu(self.layer5_2(x))
-        out2 = torch.sigmoid(self.layer6_2(out2)) # out2: reconstructed textual [batch, input_B]
+        out2 = torch.sigmoid(self.layer6_2(out2))     # out2: reconstructed textual [batch, input_B]
         return out1, out2   
-     
-def weights_init(m):  #inizializza i network weights
+
+# Inizialize network weights
+def weights_init(m):  
     classname = m.__class__.__name__
     if classname.find('Linear') != -1:
         m.weight.data.normal_(0.0, 0.02)
@@ -44,28 +49,39 @@ def weights_init(m):  #inizializza i network weights
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
 
-def define_AE(input_A, input_B, gpu_ids=[]):  #Crea AutoEncoder 
-    NetAE = AutoEncoder(input_A, input_B)  #input_A: dimensione modalità A (visual)  #input_B: dimensione modalità B (textual)
-    if len(gpu_ids) > 0 and torch.cuda.is_available(): #gpu_ids: lista di GPU IDs
+# Create AutoEncoder 
+def define_AE(input_A, input_B, gpu_ids=[]):
+
+    NetAE = AutoEncoder(input_A, input_B)  # input_A: modality A dimension (visual) - input_B: modality B dimension (textual)
+    if len(gpu_ids) > 0 and torch.cuda.is_available():
         NetAE = NetAE.cuda(gpu_ids[0])
     NetAE.apply(weights_init)
+
     return NetAE
 
-def define_G(input_dim, output_dim, gpu_ids=[]): #Crea Generator
-    netG = Generator(input_dim, output_dim)  #input_dim: dimensione input  #output_dim: dimensione output 
+# Create Generator
+def define_G(input_dim, output_dim, gpu_ids=[]): 
+
+    netG = Generator(input_dim, output_dim)           
     if len(gpu_ids) > 0 and torch.cuda.is_available():
-        netG = netG.cuda(gpu_ids[0])  #gpu_ids: lista di GPU IDs
+        netG = netG.cuda(gpu_ids[0])  
     netG.apply(weights_init)
+
     return netG
 
-def define_D(input_dim, gpu_ids=[]):  #Crea Discriminator   
-    netD = Discriminator(input_dim) #input_dim: dimensione input
+# Create Discriminator   
+def define_D(input_dim, gpu_ids=[]): 
+
+    netD = Discriminator(input_dim)
     if len(gpu_ids) > 0 and torch.cuda.is_available():
-        netD = netD.cuda(gpu_ids[0]) #gpu_ids: lista di GPU IDs
+        netD = netD.cuda(gpu_ids[0])
     netD.apply(weights_init)
+
     return netD
 
-class GANLoss(nn.Module):  #GAN Loss, supporta LSGAN (MSE) o vanilla GAN (BCE)
+# GAN Loss, supports LSGAN (MSE) or vanilla GAN (BCE)
+class GANLoss(nn.Module):  
+
     def __init__(self, use_lsgan=True, target_real_label=1.0, target_fake_label=0.0):
         super(GANLoss, self).__init__()
         self.real_label = target_real_label
@@ -92,7 +108,8 @@ class GANLoss(nn.Module):  #GAN Loss, supporta LSGAN (MSE) o vanilla GAN (BCE)
         target_tensor = self.get_target_tensor(input, target_is_real)
         return self.loss(input, target_tensor)
 
-class Generator(nn.Module):  #Generator per feature vectors: mappa da una modalità all'altra (es. visual -> textual) -> l'originale usa ResNet/UNet per immagini, qui usiamo MLP per vectors.
+# Generator for feature vectors: map from one modality to another (e.g. visual -> textual); the original uses ResNet/UNet for images, here we use MLP for vectors.
+class Generator(nn.Module): 
     def __init__(self, input_dim, output_dim, hidden_dims=[512, 256], dropout=0.3):
         super(Generator, self).__init__()
         layers = []
@@ -106,7 +123,7 @@ class Generator(nn.Module):  #Generator per feature vectors: mappa da una modali
                 nn.Dropout(dropout)
             ])
             prev_dim = hidden_dim
-        # Output layer con Tanh
+        # Output layer with Tanh
         layers.extend([
             nn.Linear(prev_dim, output_dim),
             nn.Tanh()
@@ -116,7 +133,8 @@ class Generator(nn.Module):  #Generator per feature vectors: mappa da una modali
     def forward(self, x):
         return self.model(x)
 
-class Discriminator(nn.Module):  #Discriminator per feature vectors: distingue tra features reali e generate -> l'originale usa NLayerDiscriminator (PatchGAN) per immagini, qui usiamo MLP per vectors.
+# Discriminator for feature vectors: distinguishes between real and generated features; the original uses NLayerDiscriminator (PatchGAN) for images, here we use MLP for vectors.
+class Discriminator(nn.Module):  
     def __init__(self, input_dim, hidden_dims=[256, 128], dropout=0.3):
         super(Discriminator, self).__init__()
         layers = []
@@ -129,7 +147,7 @@ class Discriminator(nn.Module):  #Discriminator per feature vectors: distingue t
                 nn.Dropout(dropout)
             ])
             prev_dim = hidden_dim
-        # Output layer: probabilità real/fake
+        # Output layer: real/fake probability
         layers.extend([
             nn.Linear(prev_dim, 1),
             nn.Sigmoid()

@@ -1,0 +1,1235 @@
+##############################################################################
+Risultati - Baby - LGMRec
+##############################################################################
+
+Baby - zeros
+█████████████ BEST ████████████████
+04 Jun 19:51    INFO Best hyper idx: 14
+04 Jun 19:51    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.089257417103    ndcg@20: 0.039651612840    hr@20: 0.095392670157    ,
+Test: recall@20: 0.091137761163    ndcg@20: 0.044649316347    hr@20: 0.147539267016  
+
+Baby - random 
+█████████████ BEST ████████████████
+28 May 13:54    INFO Best hyper idx: 14
+28 May 13:54    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.083331588133    ndcg@20: 0.035796076561    hr@20: 0.089109947644    ,
+Test: recall@20: 0.085110086685    ndcg@20: 0.041660841662    hr@20: 0.138376963351 
+
+Baby - mean
+█████████████ BEST ████████████████
+28 May 20:01    INFO Best hyper idx: 10
+28 May 20:01    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.088543630017    ndcg@20: 0.039263547900    hr@20: 0.094607329843    ,
+Test: recall@20: 0.090697979086    ndcg@20: 0.044606052911    hr@20: 0.146753926702
+
+Baby - neighmean
+█████████████ BEST ████████████████
+03 Jun 10:27    INFO Best hyper idx: 14
+03 Jun 10:27    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.090960732984    ndcg@20: 0.039838210776    hr@20: 0.097329842932    ,
+Test: recall@20: 0.092688598632    ndcg@20: 0.045391209077    hr@20: 0.150366492147    
+
+Baby - featprop
+█████████████ BEST ████████████████
+03 Jun 12:16    INFO Best hyper idx: 11
+03 Jun 12:16    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.090166666667    ndcg@20: 0.039440620813    hr@20: 0.096492146597    ,
+Test: recall@20: 0.091825007499    ndcg@20: 0.045165236172    hr@20: 0.148324607330  
+
+Baby - perspagerank
+█████████████ BEST ████████████████
+03 Jun 13:51    INFO Best hyper idx: 4
+03 Jun 13:51    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.088796684119    ndcg@20: 0.039525537927    hr@20: 0.094973821990    ,
+Test: recall@20: 0.092118250423    ndcg@20: 0.045739007339    hr@20: 0.149005235602
+
+Baby - heat
+█████████████ BEST ████████████████
+03 Jun 15:28    INFO Best hyper idx: 15
+03 Jun 15:28    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 1e-06),
+Valid: recall@20: 0.090991273997    ndcg@20: 0.039903744196    hr@20: 0.097382198953    ,
+Test: recall@20: 0.092724749218    ndcg@20: 0.045342687990    hr@20: 0.150157068063   
+
+Baby - autoenc
+█████████████ BEST ████████████████
+04 Jun 00:06    INFO Best hyper idx: 0
+04 Jun 00:06    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.087758726003    ndcg@20: 0.038011167262    hr@20: 0.093455497382    ,
+Test: recall@20: 0.088859016248    ndcg@20: 0.043608794446    hr@20: 0.143926701571    
+
+Baby - varautoenc
+█████████████ BEST ████████████████
+04 Jun 02:06    INFO Best hyper idx: 8
+04 Jun 02:06    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.087173647469    ndcg@20: 0.038333288722    hr@20: 0.093089005236    ,
+Test: recall@20: 0.090078179066    ndcg@20: 0.044231125195    hr@20: 0.145340314136   
+
+Baby - graphautoenc
+█████████████ BEST ████████████████
+04 Jun 08:33    INFO Best hyper idx: 9
+04 Jun 08:33    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.088535340314    ndcg@20: 0.038348642061    hr@20: 0.094397905759    ,
+Test: recall@20: 0.091134538963    ndcg@20: 0.044383237013    hr@20: 0.147225130890  
+
+Baby - vargraphautoenc
+█████████████ BEST ████████████████
+04 Jun 10:26    INFO Best hyper idx: 8
+04 Jun 10:26    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.087968150087    ndcg@20: 0.037927752226    hr@20: 0.093874345550    ,
+Test: recall@20: 0.089984013514    ndcg@20: 0.044013283038    hr@20: 0.145602094241  
+
+Baby - vigan
+█████████████ BEST ████████████████
+04 Jun 12:20    INFO Best hyper idx: 12
+04 Jun 12:20    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.088554973822    ndcg@20: 0.038500923954    hr@20: 0.094816753927    ,
+Test: recall@20: 0.090284277023    ndcg@20: 0.043892838013    hr@20: 0.145235602094    
+
+Baby - smil
+█████████████ BEST ████████████████
+04 Jun 14:09    INFO Best hyper idx: 15
+04 Jun 14:09    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 1e-06),
+Valid: recall@20: 0.089462478185    ndcg@20: 0.038967146496    hr@20: 0.095445026178    ,
+Test: recall@20: 0.090300356539    ndcg@20: 0.044225449516    hr@20: 0.146335078534 
+
+Baby - mmin
+█████████████ BEST ████████████████
+04 Jun 16:10    INFO Best hyper idx: 5
+04 Jun 16:10    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.088072862129    ndcg@20: 0.038933963044    hr@20: 0.094397905759    ,
+Test: recall@20: 0.089235005469    ndcg@20: 0.043782797428    hr@20: 0.144240837696  
+
+Baby - dicmor
+█████████████ BEST ████████████████
+04 Jun 18:02    INFO Best hyper idx: 0
+04 Jun 18:02    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.087090750436    ndcg@20: 0.038491518872    hr@20: 0.092827225131    ,
+Test: recall@20: 0.090484187543    ndcg@20: 0.044384046834    hr@20: 0.145654450262   
+
+############################################################################
+Risultati - Baby - PGL
+############################################################################
+
+Baby - zeros
+█████████████ BEST ████████████████
+05 Jun 15:17    INFO Best hyper idx: 16
+05 Jun 15:17    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.01, 'local'),
+Valid: recall@20: 0.083867801047    ndcg@20: 0.035875961098    hr@20: 0.089685863874    ,
+Test: recall@20: 0.084490366527    ndcg@20: 0.041478353633    hr@20: 0.139581151832 
+
+Baby - random
+█████████████ BEST ████████████████
+05 Jun 21:10    INFO Best hyper idx: 15
+05 Jun 21:10    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.005, 'local'),
+Valid: recall@20: 0.090599040140    ndcg@20: 0.038523471115    hr@20: 0.096596858639    ,
+Test: recall@20: 0.090767877411    ndcg@20: 0.044417301608    hr@20: 0.147434554974 
+
+Baby - mean
+█████████████ BEST ████████████████
+09 Jun 04:22    INFO Best hyper idx: 11
+09 Jun 04:22    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.01, 'local'),
+Valid: recall@20: 0.090094677138    ndcg@20: 0.038615078152    hr@20: 0.096125654450    ,
+Test: recall@20: 0.089977173641    ndcg@20: 0.044360971397    hr@20: 0.146492146597    
+
+Baby - neighmean
+█████████████ BEST ████████████████
+10 Jun 02:34    INFO Best hyper idx: 2
+10 Jun 02:34    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.092091186736    ndcg@20: 0.040249788058    hr@20: 0.098272251309    ,
+Test: recall@20: 0.091123545158    ndcg@20: 0.045324680411    hr@20: 0.147225130890 
+
+Baby - featprop
+█████████████ BEST ████████████████
+10 Jun 13:22    INFO Best hyper idx: 7
+10 Jun 13:22    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.05, 'local'),
+Valid: recall@20: 0.091892233857    ndcg@20: 0.040430022318    hr@20: 0.098062827225    ,
+Test: recall@20: 0.091149099882    ndcg@20: 0.045539547752    hr@20: 0.147591623037  
+
+Baby - perspagerank
+█████████████ BEST ████████████████
+10 Jun 17:14    INFO Best hyper idx: 10
+10 Jun 17:14    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.005, 'local'),
+Valid: recall@20: 0.092308464223    ndcg@20: 0.039236126101    hr@20: 0.098481675393    ,
+Test: recall@20: 0.092518163192    ndcg@20: 0.045318119983    hr@20: 0.150418848168   
+
+Baby - heat
+█████████████ BEST ████████████████
+10 Jun 20:53    INFO Best hyper idx: 2
+10 Jun 20:53    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.092548429319    ndcg@20: 0.040671729348    hr@20: 0.098952879581    ,
+Test: recall@20: 0.092387010023    ndcg@20: 0.046024146548    hr@20: 0.148900523560 
+
+Baby - autoenc
+█████████████ BEST ████████████████
+11 Jun 02:55    INFO Best hyper idx: 6
+11 Jun 02:55    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.091627835951    ndcg@20: 0.038757336382    hr@20: 0.097748691099    ,
+Test: recall@20: 0.090064327906    ndcg@20: 0.044646493795    hr@20: 0.146230366492  
+
+Baby - varautoenc
+█████████████ BEST ████████████████
+11 Jun 12:38    INFO Best hyper idx: 6
+11 Jun 12:38    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.090157504363    ndcg@20: 0.038464841375    hr@20: 0.096178010471    ,
+Test: recall@20: 0.091417462845    ndcg@20: 0.044408317299    hr@20: 0.148586387435  
+
+Baby - graphautoenc
+█████████████ BEST ████████████████
+11 Jun 16:00    INFO Best hyper idx: 1
+11 Jun 16:00    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.01, 'local'),
+Valid: recall@20: 0.093259598604    ndcg@20: 0.039496773085    hr@20: 0.099685863874    ,
+Test: recall@20: 0.090487639760    ndcg@20: 0.045032257656    hr@20: 0.147277486911    
+
+Baby - vargraphautoenc
+█████████████ BEST ████████████████
+11 Jun 20:57    INFO Best hyper idx: 6
+11 Jun 20:57    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.091765706806    ndcg@20: 0.039078935105    hr@20: 0.098324607330    ,
+Test: recall@20: 0.089953653095    ndcg@20: 0.044514430325    hr@20: 0.146387434555    
+
+Baby - vigan
+█████████████ BEST ████████████████
+12 Jun 00:39    INFO Best hyper idx: 6
+12 Jun 00:39    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.091510471204    ndcg@20: 0.039187120900    hr@20: 0.097748691099    ,
+Test: recall@20: 0.090428245693    ndcg@20: 0.044474478342    hr@20: 0.147015706806   
+
+Baby - smil
+█████████████ BEST ████████████████
+12 Jun 04:16    INFO Best hyper idx: 1
+12 Jun 04:16    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.01, 'local'),
+Valid: recall@20: 0.090755235602    ndcg@20: 0.038659723195    hr@20: 0.097120418848    ,
+Test: recall@20: 0.089671244114    ndcg@20: 0.043953762683    hr@20: 0.145235602094 
+
+Baby - mmin
+█████████████ BEST ████████████████
+12 Jun 17:40    INFO Best hyper idx: 21
+12 Jun 17:40    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.4, 0.01, 'local'),
+Valid: recall@20: 0.088722513089    ndcg@20: 0.037684883743    hr@20: 0.094764397906    ,
+Test: recall@20: 0.089499400977    ndcg@20: 0.043929521473    hr@20: 0.146753926702  
+
+Baby - dicmor
+█████████████ BEST ████████████████
+13 Jun 02:36    INFO Best hyper idx: 6
+13 Jun 02:36    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.090947207679    ndcg@20: 0.038693040267    hr@20: 0.097329842932    ,
+Test: recall@20: 0.090221626396    ndcg@20: 0.044211146312    hr@20: 0.146701570681    
+
+############################################################################
+Risultati - Beauty - LGMRec
+############################################################################
+
+Beauty - zeros
+█████████████ BEST ████████████████
+04 Jun 23:46    INFO Best hyper idx: 8
+04 Jun 23:46    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.137737354823    ndcg@20: 0.064061979816    hr@20: 0.147090044769    ,
+Test: recall@20: 0.137609616036    ndcg@20: 0.074369056043    hr@20: 0.208935247150    
+
+Beauty - random
+█████████████ BEST ████████████████
+05 Jun 02:33    INFO Best hyper idx: 5
+05 Jun 02:33    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.126064932001    ndcg@20: 0.057046829376    hr@20: 0.135044076245    ,
+Test: recall@20: 0.122135194507    ndcg@20: 0.064948116110    hr@20: 0.187612498269 
+
+Beauty - mean
+█████████████ BEST ████████████████
+05 Jun 09:18    INFO Best hyper idx: 4
+05 Jun 09:18    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.137747404619    ndcg@20: 0.063815173628    hr@20: 0.147136197905    ,
+Test: recall@20: 0.136437570279    ndcg@20: 0.073162723610    hr@20: 0.207319887386    
+
+Beauty - neighmean
+█████████████ BEST ████████████████
+05 Jun 13:17    INFO Best hyper idx: 5
+05 Jun 13:17    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.138764681676    ndcg@20: 0.064247380416    hr@20: 0.148105413763    ,
+Test: recall@20: 0.138776458020    ndcg@20: 0.074339474761    hr@20: 0.211796741589   
+
+Beauty - featprop
+█████████████ BEST ████████████████
+05 Jun 21:07    INFO Best hyper idx: 4
+05 Jun 21:07    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.139472013451    ndcg@20: 0.064353896673    hr@20: 0.148797710804    ,
+Test: recall@20: 0.138692217447    ndcg@20: 0.074262057527    hr@20: 0.211658282180    
+
+Beauty - perspagerank
+█████████████ BEST ████████████████
+07 Jun 13:46    INFO Best hyper idx: 2
+07 Jun 13:46    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.139889259779    ndcg@20: 0.064777521344    hr@20: 0.149443854710    ,
+Test: recall@20: 0.139103987567    ndcg@20: 0.073830072783    hr@20: 0.212304426086   
+
+Beauty - heat
+█████████████ BEST ████████████████
+07 Jun 17:05    INFO Best hyper idx: 10
+07 Jun 17:05    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.140337314824    ndcg@20: 0.064888994493    hr@20: 0.149951539207    ,
+Test: recall@20: 0.139293588484    ndcg@20: 0.074807999415    hr@20: 0.212535191766  
+
+Beauty - autoenc
+█████████████ BEST ████████████████
+07 Jun 20:50    INFO Best hyper idx: 1
+07 Jun 20:50    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.134424363834    ndcg@20: 0.062006353010    hr@20: 0.143674712697    ,
+Test: recall@20: 0.135203687715    ndcg@20: 0.071692820916    hr@20: 0.206350671528  
+
+Beauty - varautoenc
+█████████████ BEST ████████████████
+08 Jun 00:46    INFO Best hyper idx: 4
+08 Jun 00:46    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.136110087151    ndcg@20: 0.062870547289    hr@20: 0.145243919324    ,
+Test: recall@20: 0.135657635705    ndcg@20: 0.072455758807    hr@20: 0.207089121706 
+
+Beauty - graphautoenc
+█████████████ BEST ████████████████
+08 Jun 12:54    INFO Best hyper idx: 2
+08 Jun 12:54    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.138376062946    ndcg@20: 0.065002634072    hr@20: 0.148059260627    ,
+Test: recall@20: 0.138898320907    ndcg@20: 0.074146089589    hr@20: 0.211289057091 
+
+Beauty - vargraphautoenc
+█████████████ BEST ████████████████
+08 Jun 17:11    INFO Best hyper idx: 2
+08 Jun 17:11    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.137008811253    ndcg@20: 0.063614004664    hr@20: 0.146628513407    ,
+Test: recall@20: 0.137288470487    ndcg@20: 0.072994398734    hr@20: 0.208242950108  
+
+Beauty - vigan
+█████████████ BEST ████████████████
+08 Jun 21:27    INFO Best hyper idx: 9
+08 Jun 21:27    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.136246588547    ndcg@20: 0.063030463900    hr@20: 0.145566991277    ,
+Test: recall@20: 0.137079989825    ndcg@20: 0.073947401924    hr@20: 0.208981400286    
+
+Beauty - smil
+█████████████ BEST ████████████████
+09 Jun 01:24    INFO Best hyper idx: 11
+09 Jun 01:24    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.137091280847    ndcg@20: 0.063855820224    hr@20: 0.146628513407    ,
+Test: recall@20: 0.137129199537    ndcg@20: 0.073359844853    hr@20: 0.209027553422 
+
+Beauty - mmin
+█████████████ BEST ████████████████
+09 Jun 13:19    INFO Best hyper idx: 11
+09 Jun 13:19    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.138295128460    ndcg@20: 0.064355140356    hr@20: 0.147551576130    ,
+Test: recall@20: 0.137594626006    ndcg@20: 0.074093310305    hr@20: 0.209119859694
+
+Beauty - dicmor
+█████████████ BEST ████████████████
+09 Jun 18:14    INFO Best hyper idx: 15
+09 Jun 18:14    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 1e-06),
+Valid: recall@20: 0.136327962587    ndcg@20: 0.063064676991    hr@20: 0.145613144413    ,
+Test: recall@20: 0.137265819147    ndcg@20: 0.073026577514    hr@20: 0.209489084783   
+
+############################################################################
+Risultati - Beauty - PGL
+############################################################################
+
+Beauty - zeros
+█████████████ BEST ████████████████
+14 Jun 01:51    INFO Best hyper idx: 3
+14 Jun 01:51    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.134887618446    ndcg@20: 0.063004405526    hr@20: 0.144459316011    ,
+Test: recall@20: 0.135401869916    ndcg@20: 0.073494777063    hr@20: 0.206489130936   
+
+Beauty - random
+█████████████ BEST ████████████████
+20 Jun 17:46    INFO Best hyper idx: 3
+20 Jun 17:46    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.147780218966    ndcg@20: 0.068394368152    hr@20: 0.157797572345    ,
+Test: recall@20: 0.146917997978    ndcg@20: 0.079221376948    hr@20: 0.223842710112  
+
+Beauty - mean
+█████████████ BEST ████████████████
+18 Jun 21:19    INFO Best hyper idx: 3
+18 Jun 21:19    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.148725863758    ndcg@20: 0.068421293363    hr@20: 0.158628328795    ,
+Test: recall@20: 0.145916412955    ndcg@20: 0.078768241025    hr@20: 0.222365809757 
+
+Beauty - neighmean
+█████████████ BEST ████████████████
+21 Jun 00:16    INFO Best hyper idx: 3
+21 Jun 00:16    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.147727087915    ndcg@20: 0.068343382531    hr@20: 0.157889878617    ,
+Test: recall@20: 0.146588131725    ndcg@20: 0.078450475787    hr@20: 0.223704250704 
+
+Beauty - featprop
+█████████████ BEST ████████████████
+21 Jun 07:32    INFO Best hyper idx: 8
+21 Jun 07:32    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.147806041079    ndcg@20: 0.068293150668    hr@20: 0.158028338026    ,
+Test: recall@20: 0.147168617300    ndcg@20: 0.078162424140    hr@20: 0.224211935201 
+
+Beauty - perspagerank
+█████████████ BEST ████████████████
+21 Jun 16:37    INFO Best hyper idx: 3
+21 Jun 16:37    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.148897782525    ndcg@20: 0.069030742176    hr@20: 0.159182166428    ,
+Test: recall@20: 0.146725508664    ndcg@20: 0.078289522096    hr@20: 0.224627313426  
+
+Beauty - heat
+█████████████ BEST ████████████████
+19 Jun 08:25    INFO Best hyper idx: 3
+19 Jun 08:25    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.147646519724    ndcg@20: 0.068434905406    hr@20: 0.157705266073    ,
+Test: recall@20: 0.146374821566    ndcg@20: 0.078349599210    hr@20: 0.224073475793   
+
+Beauty - autoenc
+█████████████ BEST ████████████████
+19 Jun 18:03    INFO Best hyper idx: 8
+19 Jun 18:03    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.149155087924    ndcg@20: 0.068547788814    hr@20: 0.158859094475    ,
+Test: recall@20: 0.147240901083    ndcg@20: 0.078917552888    hr@20: 0.224027322657    
+
+Beauty - varautoenc
+█████████████ BEST ████████████████
+22 Jun 14:29    INFO Best hyper idx: 3
+22 Jun 14:29    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.145973543464    ndcg@20: 0.067168091876    hr@20: 0.155582221812    ,
+Test: recall@20: 0.144146855875    ndcg@20: 0.077495112396    hr@20: 0.220935062537 
+
+Beauty - graphautoenc
+█████████████ BEST ████████████████
+22 Jun 21:23    INFO Best hyper idx: 13
+22 Jun 21:23    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.146197496062    ndcg@20: 0.066881037891    hr@20: 0.156320671990    ,
+Test: recall@20: 0.144496998907    ndcg@20: 0.077207638692    hr@20: 0.220888909401 
+
+Beauty - vargraphautoenc
+█████████████ BEST ████████████████
+23 Jun 05:12    INFO Best hyper idx: 13
+23 Jun 05:12    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.145024052577    ndcg@20: 0.067033974701    hr@20: 0.154889924770    ,
+Test: recall@20: 0.144410782651    ndcg@20: 0.077012159873    hr@20: 0.220335071768    
+
+Beauty - vigan
+█████████████ BEST ████████████████
+23 Jun 17:01    INFO Best hyper idx: 3
+23 Jun 17:01    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.145897885287    ndcg@20: 0.067975521133    hr@20: 0.155720681220    ,
+Test: recall@20: 0.143634639867    ndcg@20: 0.077654919584    hr@20: 0.219042783957 
+
+Beauty - smil
+█████████████ BEST ████████████████
+24 Jun 02:18    INFO Best hyper idx: 3
+24 Jun 02:18    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.145830523686    ndcg@20: 0.067303836872    hr@20: 0.155859140629    ,
+Test: recall@20: 0.145257443272    ndcg@20: 0.077794755473    hr@20: 0.221258134490 
+
+Beauty - mmin
+█████████████ BEST ████████████████
+20 Jun 03:55    INFO Best hyper idx: 8
+20 Jun 03:55    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.144323092665    ndcg@20: 0.066847307626    hr@20: 0.154336087137    ,
+Test: recall@20: 0.142267008371    ndcg@20: 0.076584001193    hr@20: 0.217565883602 
+
+Beauty - dicmor
+█████████████ BEST ████████████████
+20 Jun 07:54    INFO Best hyper idx: 3
+20 Jun 07:54    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.144081319828    ndcg@20: 0.066944830425    hr@20: 0.153874555776    ,
+Test: recall@20: 0.143924542125    ndcg@20: 0.077160835327    hr@20: 0.220150459224 
+
+############################################################################
+Risultati - Office - LGMRec
+############################################################################
+
+Office - zeros
+█████████████ BEST ████████████████
+09 Jun 09:50    INFO Best hyper idx: 1
+09 Jun 09:50    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.165015283680    ndcg@20: 0.071874713970    hr@20: 0.187206441512    ,
+Test: recall@20: 0.159294220405    ndcg@20: 0.080640823703    hr@20: 0.262581078059
+
+Office - random
+█████████████ BEST ████████████████
+09 Jun 10:30    INFO Best hyper idx: 5
+09 Jun 10:30    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.139677924402    ndcg@20: 0.059523769503    hr@20: 0.157682845001    ,
+Test: recall@20: 0.141710976714    ndcg@20: 0.071611284040    hr@20: 0.239543726236   
+
+Office - mean
+█████████████ BEST ████████████████
+09 Jun 11:07    INFO Best hyper idx: 4
+09 Jun 11:07    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.163225974801    ndcg@20: 0.070897331550    hr@20: 0.183851487363    ,
+Test: recall@20: 0.160542210095    ndcg@20: 0.080480751181    hr@20: 0.267278013867  
+
+Office - neighmean
+█████████████ BEST ████████████████
+09 Jun 11:40    INFO Best hyper idx: 1
+09 Jun 11:40    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.168277044658    ndcg@20: 0.073207241618    hr@20: 0.190785059271    ,
+Test: recall@20: 0.163022737967    ndcg@20: 0.081723744924    hr@20: 0.269067322747 
+
+Office - featprop
+█████████████ BEST ████████████████
+09 Jun 12:14    INFO Best hyper idx: 1
+09 Jun 12:14    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.165201670022    ndcg@20: 0.071596767987    hr@20: 0.186535450682    ,
+Test: recall@20: 0.159460104249    ndcg@20: 0.080154541931    hr@20: 0.264817714158 
+
+Office - perspagerank
+█████████████ BEST ████████████████
+09 Jun 12:46    INFO Best hyper idx: 1
+09 Jun 12:46    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.167606053828    ndcg@20: 0.073063415772    hr@20: 0.188101095952    ,
+Test: recall@20: 0.160265293244    ndcg@20: 0.080565037706    hr@20: 0.265712368598 
+
+Office - heat
+█████████████ BEST ████████████████
+09 Jun 13:22    INFO Best hyper idx: 9
+09 Jun 13:22    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.165798106315    ndcg@20: 0.071890371182    hr@20: 0.186759114292    ,
+Test: recall@20: 0.161007369082    ndcg@20: 0.081247618112    hr@20: 0.266607023037 
+
+Office - autoenc
+█████████████ BEST ████████████████
+09 Jun 14:05    INFO Best hyper idx: 8
+09 Jun 14:05    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.157168418698    ndcg@20: 0.069534104633    hr@20: 0.177588906285    ,
+Test: recall@20: 0.158447848903    ndcg@20: 0.078627047829    hr@20: 0.261015432789    
+
+Office - varautoenc
+█████████████ BEST ████████████████
+09 Jun 14:49    INFO Best hyper idx: 9
+09 Jun 14:49    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.162461790800    ndcg@20: 0.071234788240    hr@20: 0.182733169313    ,
+Test: recall@20: 0.158281610037    ndcg@20: 0.078555858227    hr@20: 0.263028405278 
+
+Office - graphautoenc
+█████████████ BEST ████████████████
+09 Jun 15:24    INFO Best hyper idx: 1
+09 Jun 15:24    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.161343472750    ndcg@20: 0.070572330932    hr@20: 0.182062178484    ,
+Test: recall@20: 0.158325011428    ndcg@20: 0.078174962243    hr@20: 0.263699396108    
+
+Office - vargraphautoenc
+█████████████ BEST ████████████████
+09 Jun 16:06    INFO Best hyper idx: 9
+09 Jun 16:06    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.161418027287    ndcg@20: 0.069956221333    hr@20: 0.181838514874    ,
+Test: recall@20: 0.157624190715    ndcg@20: 0.078858657306    hr@20: 0.261910087229 
+
+Office - vigan
+█████████████ BEST ████████████████
+09 Jun 16:38    INFO Best hyper idx: 0
+09 Jun 16:38    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.163058227093    ndcg@20: 0.071154347624    hr@20: 0.183851487363    ,
+Test: recall@20: 0.157679751596    ndcg@20: 0.079715334515    hr@20: 0.262581078059
+
+Office - smil
+█████████████ BEST ████████████████
+09 Jun 17:17    INFO Best hyper idx: 1
+09 Jun 17:17    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.167717885633    ndcg@20: 0.072442833661    hr@20: 0.188995750391    ,
+Test: recall@20: 0.158946928590    ndcg@20: 0.080242262677    hr@20: 0.264370386938    
+
+Office - mmin
+█████████████ BEST ████████████████
+09 Jun 17:51    INFO Best hyper idx: 8
+09 Jun 17:51    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.161287556848    ndcg@20: 0.070195794773    hr@20: 0.182062178484    ,
+Test: recall@20: 0.155709559210    ndcg@20: 0.078910852906    hr@20: 0.258107805860  
+
+Office - dicmor
+█████████████ BEST ████████████████
+09 Jun 18:27    INFO Best hyper idx: 0
+09 Jun 18:27    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.164884813241    ndcg@20: 0.072309647711    hr@20: 0.185864459852    ,
+Test: recall@20: 0.160080165616    ndcg@20: 0.081229695142    hr@20: 0.265936032208    
+
+############################################################################
+Risultati - Office - PGL
+############################################################################
+
+Office - zeros
+█████████████ BEST ████████████████
+09 Jun 19:05    INFO Best hyper idx: 3
+09 Jun 19:05    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.144773726981    ndcg@20: 0.064173900810    hr@20: 0.165734734959    ,
+Test: recall@20: 0.143043824636    ndcg@20: 0.072762387533    hr@20: 0.241333035115    
+
+Office - random
+█████████████ BEST ████████████████
+09 Jun 19:42    INFO Best hyper idx: 18
+09 Jun 19:42    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.173525684038    ndcg@20: 0.074881943000    hr@20: 0.193916349810    ,
+Test: recall@20: 0.163724764016    ndcg@20: 0.081276761913    hr@20: 0.267054350257  
+
+Office - mean
+█████████████ BEST ████████████████
+09 Jun 20:48    INFO Best hyper idx: 18
+09 Jun 20:48    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.169481100425    ndcg@20: 0.073080193612    hr@20: 0.188995750391    ,
+Test: recall@20: 0.162918480163    ndcg@20: 0.079958527807    hr@20: 0.266159695817    
+
+Office - neighmean
+█████████████ BEST ████████████████
+09 Jun 21:38    INFO Best hyper idx: 13
+09 Jun 21:38    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.166935062999    ndcg@20: 0.073747625654    hr@20: 0.187877432342    ,
+Test: recall@20: 0.162636525978    ndcg@20: 0.079747978573    hr@20: 0.260568105569 
+
+Office - featprop
+█████████████ BEST ████████████████
+09 Jun 22:14    INFO Best hyper idx: 13
+09 Jun 22:14    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.167952732424    ndcg@20: 0.074184062371    hr@20: 0.188548423172    ,
+Test: recall@20: 0.162141174018    ndcg@20: 0.080128474952    hr@20: 0.261910087229 
+
+Office - perspagerank
+█████████████ BEST ████████████████
+09 Jun 22:52    INFO Best hyper idx: 3
+09 Jun 22:52    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.169052411839    ndcg@20: 0.073943510386    hr@20: 0.189443077611    ,
+Test: recall@20: 0.164561808131    ndcg@20: 0.081476256297    hr@20: 0.266607023037    
+
+Office - heat
+█████████████ BEST ████████████████
+09 Jun 23:53    INFO Best hyper idx: 23
+09 Jun 23:53    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.4, 0.1, 'local'),
+Valid: recall@20: 0.173346753150    ndcg@20: 0.073991957651    hr@20: 0.194811004250    ,
+Test: recall@20: 0.164297811709    ndcg@20: 0.081138446431    hr@20: 0.268396331917   
+
+Office - autoenc
+█████████████ BEST ████████████████
+10 Jun 09:16    INFO Best hyper idx: 18
+10 Jun 09:16    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.166443003057    ndcg@20: 0.071641584330    hr@20: 0.186982777902    ,
+Test: recall@20: 0.162339456066    ndcg@20: 0.080995044712    hr@20: 0.264594050548   
+
+Office - varautoenc
+█████████████ BEST ████████████████
+10 Jun 10:03    INFO Best hyper idx: 7
+10 Jun 10:03    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.05, 'local'),
+Valid: recall@20: 0.163486915679    ndcg@20: 0.071556090491    hr@20: 0.183851487363    ,
+Test: recall@20: 0.160476367242    ndcg@20: 0.078660076248    hr@20: 0.265488704988 
+
+Office - graphautoenc
+█████████████ BEST ████████████████
+10 Jun 10:50    INFO Best hyper idx: 18
+10 Jun 10:50    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.169984343547    ndcg@20: 0.074308876056    hr@20: 0.191008722881    ,
+Test: recall@20: 0.163778009187    ndcg@20: 0.080197056844    hr@20: 0.261462760009   
+
+Office - vargraphautoenc
+█████████████ BEST ████████████████
+10 Jun 11:45    INFO Best hyper idx: 18
+10 Jun 11:45    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.170021620816    ndcg@20: 0.073022168293    hr@20: 0.190337732051    ,
+Test: recall@20: 0.162877563923    ndcg@20: 0.079718535212    hr@20: 0.264817714158
+
+Office - vigan
+█████████████ BEST ████████████████
+10 Jun 12:37    INFO Best hyper idx: 13
+10 Jun 12:37    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.166051591739    ndcg@20: 0.072072773796    hr@20: 0.185640796242    ,
+Test: recall@20: 0.160490672999    ndcg@20: 0.079543129721    hr@20: 0.261239096399 
+
+Office - smil
+█████████████ BEST ████████████████
+10 Jun 13:31    INFO Best hyper idx: 7
+10 Jun 13:31    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.05, 'local'),
+Valid: recall@20: 0.166778498472    ndcg@20: 0.071954189300    hr@20: 0.186759114292    ,
+Test: recall@20: 0.161250395024    ndcg@20: 0.079602674375    hr@20: 0.267278013867  
+
+Office - mmin
+█████████████ BEST ████████████████
+10 Jun 14:20    INFO Best hyper idx: 18
+10 Jun 14:20    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.166032953105    ndcg@20: 0.070973571243    hr@20: 0.185417132633    ,
+Test: recall@20: 0.162222912156    ndcg@20: 0.079380997108    hr@20: 0.265488704988 
+
+Office - dicmor
+█████████████ BEST ████████████████
+10 Jun 15:10    INFO Best hyper idx: 7
+10 Jun 15:10    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.05, 'local'),
+Valid: recall@20: 0.166685305301    ndcg@20: 0.072442314917    hr@20: 0.186535450682    ,
+Test: recall@20: 0.164337146489    ndcg@20: 0.080365789450    hr@20: 0.268396331917  
+
+############################################################################
+Risultati - Sports - LGMRec
+############################################################################
+
+Sports - zeros
+█████████████ BEST ████████████████
+24 Jun 17:04    INFO Best hyper idx: 3
+24 Jun 17:04    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.098683730752    ndcg@20: 0.044374374501    hr@20: 0.105613341856    ,
+Test: recall@20: 0.098764373598    ndcg@20: 0.050984937900    hr@20: 0.158696031146 
+
+Sports - random
+█████████████ BEST ████████████████
+25 Jun 14:12    INFO Best hyper idx: 10
+25 Jun 14:12    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.087752792529    ndcg@20: 0.038868769718    hr@20: 0.094049625196    ,
+Test: recall@20: 0.091572448980    ndcg@20: 0.046567383145    hr@20: 0.148003951421  
+
+Sports - mean
+█████████████ BEST ████████████████
+25 Jun 20:59    INFO Best hyper idx: 3
+25 Jun 20:59    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.097168535215    ndcg@20: 0.043518514706    hr@20: 0.103695740601    ,
+Test: recall@20: 0.097384479049    ndcg@20: 0.050230374287    hr@20: 0.156575047940 
+
+Sports - neighmean
+█████████████ BEST ████████████████
+26 Jun 05:17    INFO Best hyper idx: 2
+26 Jun 05:17    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.099736797300    ndcg@20: 0.044863139114    hr@20: 0.106659306177    ,
+Test: recall@20: 0.099859880307    ndcg@20: 0.051375250162    hr@20: 0.160468359579 
+
+Sports - featprop
+█████████████ BEST ████████████████
+26 Jun 08:12    INFO Best hyper idx: 2
+26 Jun 08:12    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.099802896434    ndcg@20: 0.045164756530    hr@20: 0.106746469870    ,
+Test: recall@20: 0.099286920964    ndcg@20: 0.051279994120    hr@20: 0.159741995467 
+
+Sports - perspagerank
+█████████████ BEST ████████████████
+26 Jun 14:56    INFO Best hyper idx: 3
+26 Jun 14:56    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.099747127812    ndcg@20: 0.044996901229    hr@20: 0.106455924226    ,
+Test: recall@20: 0.099295288815    ndcg@20: 0.051283394331    hr@20: 0.159393340694
+
+Sports - heat
+█████████████ BEST ████████████████
+26 Jun 22:11    INFO Best hyper idx: 2
+26 Jun 22:11    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.099397988795    ndcg@20: 0.045351480702    hr@20: 0.106194433145    ,
+Test: recall@20: 0.098971037917    ndcg@20: 0.051062677454    hr@20: 0.159335231565 
+
+Sports - autoenc
+█████████████ BEST ████████████████
+28 Jun 15:48    INFO Best hyper idx: 4
+28 Jun 15:48    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.094754181614    ndcg@20: 0.042387113474    hr@20: 0.101255157185    ,
+Test: recall@20: 0.096256954442    ndcg@20: 0.049432945865    hr@20: 0.154657446685   
+
+Sports - varautoenc
+█████████████ BEST ████████████████
+29 Jun 15:25    INFO Best hyper idx: 5
+29 Jun 15:25    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.095027778763    ndcg@20: 0.042408260825    hr@20: 0.101574757394    ,
+Test: recall@20: 0.095653855962    ndcg@20: 0.049444104515    hr@20: 0.154337846476 
+
+Sports - graphautoenc
+█████████████ BEST ████████████████
+29 Jun 21:14    INFO Best hyper idx: 2
+29 Jun 21:14    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.095321039102    ndcg@20: 0.042745983081    hr@20: 0.101894357604    ,
+Test: recall@20: 0.097251251170    ndcg@20: 0.049740522108    hr@20: 0.156139229473    
+
+Sports - vargraphautoenc
+█████████████ BEST ████████████████
+02 Jul 00:02    INFO Best hyper idx: 4
+02 Jul 00:02    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.095739615593    ndcg@20: 0.042696175209    hr@20: 0.102388285200    ,
+Test: recall@20: 0.096572987760    ndcg@20: 0.049836170279    hr@20: 0.155819629264
+
+Sports - vigan
+█████████████ BEST ████████████████
+30 Jun 06:07    INFO Best hyper idx: 3
+30 Jun 06:07    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.098051309732    ndcg@20: 0.044167032045    hr@20: 0.105119414260    ,
+Test: recall@20: 0.096688401098    ndcg@20: 0.049920267410    hr@20: 0.156342611424   
+
+Sports - smil
+█████████████ BEST ████████████████
+30 Jun 08:31    INFO Best hyper idx: 3
+30 Jun 08:31    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.097323735013    ndcg@20: 0.043822638327    hr@20: 0.103899122552    ,
+Test: recall@20: 0.097159079278    ndcg@20: 0.050188866505    hr@20: 0.156487884247 
+
+Sports - mmin
+█████████████ BEST ████████████████
+30 Jun 14:59    INFO Best hyper idx: 6
+30 Jun 14:59    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.096558227947    ndcg@20: 0.043376179716    hr@20: 0.103085594747    ,
+Test: recall@20: 0.096493961457    ndcg@20: 0.049874972015    hr@20: 0.156023011215   
+
+Sports - dicmor
+█████████████ BEST ████████████████
+30 Jun 21:14    INFO Best hyper idx: 3
+30 Jun 21:14    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.097277247710    ndcg@20: 0.043746918441    hr@20: 0.104044395375    ,
+Test: recall@20: 0.097725224929    ndcg@20: 0.050497821760    hr@20: 0.156894648149   
+
+############################################################################
+Risultati - Sports - PGL
+############################################################################
+
+Sports - zeros
+█████████████ BEST ████████████████
+25 Jun 09:45    INFO Best hyper idx: 8
+25 Jun 09:45    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.098202912299    ndcg@20: 0.044759941190    hr@20: 0.105555232727    ,
+Test: recall@20: 0.097373447835    ndcg@20: 0.050933165496    hr@20: 0.158056830728   
+
+Sports - random
+█████████████ BEST ████████████████
+27 Jun 11:26    INFO Best hyper idx: 13
+27 Jun 11:26    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.103108118323    ndcg@20: 0.046696468540    hr@20: 0.110436399558    ,
+Test: recall@20: 0.104998114802    ndcg@20: 0.053913587786    hr@20: 0.167267127666   
+
+Sports - mean
+█████████████ BEST ████████████████
+01 Jul 12:59    INFO Best hyper idx: 13
+01 Jul 12:59    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.103416304239    ndcg@20: 0.046715605998    hr@20: 0.110726945203    ,
+Test: recall@20: 0.104771181557    ndcg@20: 0.054152885703    hr@20: 0.167528618746    
+
+Sports - neighmean
+█████████████ BEST ████████████████
+02 Jul 14:05    INFO Best hyper idx: 13
+02 Jul 14:05    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.106322694583    ndcg@20: 0.047246552780    hr@20: 0.113981056424    ,
+Test: recall@20: 0.105470593306    ndcg@20: 0.054351985434    hr@20: 0.168603637631
+
+Sports - featprop
+█████████████ BEST ████████████████
+03 Jul 12:33    INFO Best hyper idx: 13
+03 Jul 12:33    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.106190738436    ndcg@20: 0.047322793686    hr@20: 0.113748619908    ,
+Test: recall@20: 0.105456410028    ndcg@20: 0.054320821443    hr@20: 0.168371201116
+
+Sports - perspagerank
+█████████████ BEST ████████████████
+08 Jul 13:19    INFO Best hyper idx: 2
+08 Jul 13:19    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.105088844079    ndcg@20: 0.046828942435    hr@20: 0.112644546458    ,
+Test: recall@20: 0.106184619709    ndcg@20: 0.054503886643    hr@20: 0.169155674356    
+
+Sports - heat
+█████████████ BEST ████████████████
+09 Jul 09:24    INFO Best hyper idx: 3
+09 Jul 09:24    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.104921814922    ndcg@20: 0.046884461633    hr@20: 0.112499273636    ,
+Test: recall@20: 0.106306779119    ndcg@20: 0.054515134625    hr@20: 0.169039456099  
+
+Sports - autoenc
+█████████████ BEST ████████████████
+10 Jul 09:22    INFO Best hyper idx: 2
+10 Jul 09:22    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.104125961977    ndcg@20: 0.046657526280    hr@20: 0.111278981928    ,
+Test: recall@20: 0.104831001527    ndcg@20: 0.053919926908    hr@20: 0.167528618746
+
+Sports - varautoenc
+█████████████ BEST ████████████████
+16 Jul 04:14    INFO Best hyper idx: 18
+16 Jul 04:14    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.1, 'local'),
+Valid: recall@20: 0.103025324344    ndcg@20: 0.046066632646    hr@20: 0.110087744785    ,
+Test: recall@20: 0.104629680914    ndcg@20: 0.053559634419    hr@20: 0.167121854843 
+
+Sports - graphautoenc
+█████████████ BEST ████████████████
+16 Jul 20:07    INFO Best hyper idx: 8
+16 Jul 20:07    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.104197111071    ndcg@20: 0.047126480813    hr@20: 0.111540473008    ,
+Test: recall@20: 0.105882906462    ndcg@20: 0.054514244223    hr@20: 0.168719855889
+
+Sports - vargraphautoenc
+█████████████ BEST ████████████████
+17 Jul 09:26    INFO Best hyper idx: 3
+17 Jul 09:26    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.103217003763    ndcg@20: 0.046524134126    hr@20: 0.110581672381    ,
+Test: recall@20: 0.104763117713    ndcg@20: 0.053981271888    hr@20: 0.166802254634  
+
+Sports - vigan
+█████████████ BEST ████████████████
+17 Jul 23:12    INFO Best hyper idx: 2
+17 Jul 23:12    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.101351181892    ndcg@20: 0.045283222748    hr@20: 0.108141088965    ,
+Test: recall@20: 0.103080164734    ndcg@20: 0.052099770797    hr@20: 0.165029926201
+
+Sports - smil
+█████████████ BEST ████████████████
+18 Jul 11:50    INFO Best hyper idx: 2
+18 Jul 11:50    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.102540758774    ndcg@20: 0.046130076585    hr@20: 0.109419489802    ,
+Test: recall@20: 0.103599278222    ndcg@20: 0.053103982446    hr@20: 0.165407635540 
+
+Sports - mmin
+█████████████ BEST ████████████████
+19 Jul 01:46    INFO Best hyper idx: 13
+19 Jul 01:46    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.101286051243    ndcg@20: 0.045644410310    hr@20: 0.108170143530    ,
+Test: recall@20: 0.101948880054    ndcg@20: 0.052800858687    hr@20: 0.163519088849    
+
+Sports - dicmor
+█████████████ BEST ████████████████
+19 Jul 22:41    INFO Best hyper idx: 2
+19 Jul 22:41    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.102889459666    ndcg@20: 0.046292098292    hr@20: 0.110000581091    ,
+Test: recall@20: 0.103440924767    ndcg@20: 0.053004875331    hr@20: 0.165640072055   
+
+############################################################################
+Risultati - Baby50 - LGMRec
+############################################################################
+
+Baby50 - autoenc
+█████████████ BEST ████████████████
+02 Jul 16:23    INFO Best hyper idx: 13
+02 Jul 16:23    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.075060645724    ndcg@20: 0.032759356427    hr@20: 0.080471204188    ,
+Test: recall@20: 0.076567946788    ndcg@20: 0.037739146153    hr@20: 0.126753926702 
+
+Baby50 - dicmor
+█████████████ BEST ████████████████
+02 Jul 18:10    INFO Best hyper idx: 14
+02 Jul 18:10    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.078020506108    ndcg@20: 0.033966827313    hr@20: 0.083769633508    ,
+Test: recall@20: 0.082515125409    ndcg@20: 0.040248071572    hr@20: 0.134188481675   
+
+Baby50 - heat
+█████████████ BEST ████████████████
+02 Jul 20:01    INFO Best hyper idx: 14
+02 Jul 20:01    INFO      Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0001, 0.0),
+Valid: recall@20: 0.088048429319    ndcg@20: 0.038170737023    hr@20: 0.094031413613    ,
+Test: recall@20: 0.090456027974    ndcg@20: 0.044339081876    hr@20: 0.145863874346    
+
+Baby50 - mean
+█████████████ BEST ████████████████
+02 Jul 22:13    INFO Best hyper idx: 5
+02 Jul 22:13    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.080481239092    ndcg@20: 0.035299851442    hr@20: 0.086020942408    ,
+Test: recall@20: 0.085753458729    ndcg@20: 0.042077977161    hr@20: 0.138795811518  
+
+Baby50 - mmin
+█████████████ BEST ████████████████
+03 Jul 00:21    INFO Best hyper idx: 0
+03 Jul 00:21    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.079512652705    ndcg@20: 0.034895285685    hr@20: 0.085078534031    ,
+Test: recall@20: 0.083635658989    ndcg@20: 0.041436752270    hr@20: 0.135340314136 
+
+Baby50 - vigan
+█████████████ BEST ████████████████
+09 Jul 11:14    INFO Best hyper idx: 5
+09 Jul 11:14    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.079163612565    ndcg@20: 0.035106702938    hr@20: 0.084607329843    ,
+Test: recall@20: 0.083073437470    ndcg@20: 0.041048506566    hr@20: 0.135078534031 
+
+############################################################################
+Risultati - Baby50 - PGL
+############################################################################
+
+Baby50 - autoenc
+█████████████ BEST ████████████████
+03 Jul 16:47    INFO Best hyper idx: 6
+03 Jul 16:47    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.083973385689    ndcg@20: 0.036412577581    hr@20: 0.089947643979    ,
+Test: recall@20: 0.083195593819    ndcg@20: 0.040988234127    hr@20: 0.137643979058 
+
+Baby50 - dicmor
+█████████████ BEST ████████████████
+03 Jul 20:55    INFO Best hyper idx: 1
+03 Jul 20:55    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.01, 'local'),
+Valid: recall@20: 0.084224694590    ndcg@20: 0.036019067326    hr@20: 0.090209424084    ,
+Test: recall@20: 0.082315784129    ndcg@20: 0.040721104840    hr@20: 0.135287958115    
+
+Baby50 - heat
+█████████████ BEST ████████████████
+03 Jul 23:31    INFO Best hyper idx: 23
+03 Jul 23:31    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.4, 0.1, 'local'),
+Valid: recall@20: 0.089938232361    ndcg@20: 0.039300991292    hr@20: 0.096492146597    ,
+Test: recall@20: 0.089811066043    ndcg@20: 0.045430879573    hr@20: 0.147591623037 
+
+Baby50 - mean
+█████████████ BEST ████████████████
+04 Jul 09:43    INFO Best hyper idx: 1
+04 Jul 09:43    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.01, 'local'),
+Valid: recall@20: 0.087284904014    ndcg@20: 0.037188509718    hr@20: 0.093455497382    ,
+Test: recall@20: 0.086157074746    ndcg@20: 0.042357720561    hr@20: 0.141832460733
+
+Baby50 - mmin
+█████████████ BEST ████████████████
+04 Jul 09:43    INFO Best hyper idx: 5
+04 Jul 09:43    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.005, 'local'),
+Valid: recall@20: 0.081866928447    ndcg@20: 0.035269731594    hr@20: 0.087748691099    ,
+Test: recall@20: 0.081756053865    ndcg@20: 0.040012146171    hr@20: 0.135654450262
+
+Baby50 - vigan
+█████████████ BEST ████████████████
+09 Jul 15:36    INFO Best hyper idx: 16
+09 Jul 15:36    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.01, 'local'),
+Valid: recall@20: 0.083005671902    ndcg@20: 0.035489292730    hr@20: 0.088795811518    ,
+Test: recall@20: 0.082090553399    ndcg@20: 0.040081357536    hr@20: 0.135235602094   
+
+############################################################################
+Risultati - Baby90 - LGMRec
+############################################################################
+
+Baby90 - autoenc
+█████████████ BEST ████████████████
+04 Jul 10:49    INFO Best hyper idx: 5
+04 Jul 10:49    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.058360820244    ndcg@20: 0.025419159497    hr@20: 0.063193717277    ,
+Test: recall@20: 0.060062816374    ndcg@20: 0.029503226165    hr@20: 0.100471204188 
+
+Baby90 - dicmor
+█████████████ BEST ████████████████
+05 Jul 17:21    INFO Best hyper idx: 0
+05 Jul 17:21    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000    ,
+Test: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000  
+
+Baby90 - heat
+█████████████ BEST ████████████████
+04 Jul 13:01    INFO Best hyper idx: 2
+04 Jul 13:01    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.088652518075    ndcg@20: 0.038197419486    hr@20: 0.095026178010    ,
+Test: recall@20: 0.087956387054    ndcg@20: 0.043217469801    hr@20: 0.145287958115   
+
+Baby90 - mean
+█████████████ BEST ████████████████
+04 Jul 14:32    INFO Best hyper idx: 5
+04 Jul 14:32    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.072815445026    ndcg@20: 0.031528752976    hr@20: 0.078115183246    ,
+Test: recall@20: 0.072801496497    ndcg@20: 0.036188430220    hr@20: 0.119581151832   
+
+Baby90 - mmin
+█████████████ BEST ████████████████
+04 Jul 13:05    INFO Best hyper idx: 3
+04 Jul 13:05    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.063347731239    ndcg@20: 0.027803085688    hr@20: 0.068586387435    ,
+Test: recall@20: 0.065197567603    ndcg@20: 0.032080306798    hr@20: 0.110314136126   
+
+Baby90 - vigan
+█████████████ BEST ████████████████
+08 Jul 16:28    INFO Best hyper idx: 9
+08 Jul 16:28    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.069259598604    ndcg@20: 0.030041097243    hr@20: 0.074345549738    ,
+Test: recall@20: 0.069179520741    ndcg@20: 0.033861987401    hr@20: 0.114136125654   
+
+############################################################################
+Risultati - Baby90 - PGL
+############################################################################
+
+Baby90 - autoenc
+█████████████ BEST ████████████████
+04 Jul 23:36    INFO Best hyper idx: 1
+04 Jul 23:36    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.01, 'local'),
+Valid: recall@20: 0.075548429319    ndcg@20: 0.032845903587    hr@20: 0.081570680628    ,
+Test: recall@20: 0.076777891538    ndcg@20: 0.037423173517    hr@20: 0.127068062827  
+
+Baby90 - dicmor
+█████████████ BEST ████████████████
+05 Jul 17:38    INFO Best hyper idx: 0
+05 Jul 17:38    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.005, 'local'),
+Valid: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000    ,
+Test: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000 
+
+Baby90 - heat
+█████████████ BEST ████████████████
+04 Jul 20:39    INFO Best hyper idx: 16
+04 Jul 20:39    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.3, 0.01, 'local'),
+Valid: recall@20: 0.090575105959    ndcg@20: 0.039145191254    hr@20: 0.097120418848    ,
+Test: recall@20: 0.091174504715    ndcg@20: 0.044800142696    hr@20: 0.149214659686 
+
+Baby90 - mean
+█████████████ BEST ████████████████
+04 Jul 17:50    INFO Best hyper idx: 6
+04 Jul 17:50    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.079281413613    ndcg@20: 0.033737207642    hr@20: 0.085235602094    ,
+Test: recall@20: 0.079900536636    ndcg@20: 0.038991816770    hr@20: 0.131518324607 
+
+Baby90 - mmin
+█████████████ BEST ████████████████
+05 Jul 15:43    INFO Best hyper idx: 6
+05 Jul 15:43    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.01, 'local'),
+Valid: recall@20: 0.077867364747    ndcg@20: 0.033784542602    hr@20: 0.083821989529    ,
+Test: recall@20: 0.078125768211    ndcg@20: 0.038435891492    hr@20: 0.129738219895  
+
+Baby90 - vigan
+█████████████ BEST ████████████████
+08 Jul 21:39    INFO Best hyper idx: 11
+08 Jul 21:39    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.01, 'local'),
+Valid: recall@20: 0.078953315881    ndcg@20: 0.034181092888    hr@20: 0.084869109948    ,
+Test: recall@20: 0.078173508719    ndcg@20: 0.038448863318    hr@20: 0.129790575916  
+
+############################################################################
+Risultati - Beauty50 - LGMRec
+############################################################################
+
+Beauty50 - autoenc
+█████████████ BEST ████████████████
+05 Jul 21:18    INFO Best hyper idx: 0
+05 Jul 21:18    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.120592175705    ndcg@20: 0.055672627066    hr@20: 0.129505699912    ,
+Test: recall@20: 0.120439966399    ndcg@20: 0.064171492143    hr@20: 0.185812525961  
+
+Beauty50 - dicmor
+█████████████ BEST ████████████████
+06 Jul 12:13    INFO Best hyper idx: 10
+06 Jul 12:13    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.125645229834    ndcg@20: 0.058206737282    hr@20: 0.134305626067    ,
+Test: recall@20: 0.124119771298    ndcg@20: 0.066408426913    hr@20: 0.190381686436  
+
+Beauty50 - heat
+█████████████ BEST ████████████████
+06 Jul 00:27    INFO Best hyper idx: 10
+06 Jul 00:27    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.133965945978    ndcg@20: 0.061950729305    hr@20: 0.143213181336    ,
+Test: recall@20: 0.134705185957    ndcg@20: 0.071777208733    hr@20: 0.206027599575  
+
+Beauty50 - mean
+█████████████ BEST ████████████████
+06 Jul 06:08    INFO Best hyper idx: 10
+06 Jul 06:08    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 0.0),
+Valid: recall@20: 0.126554411650    ndcg@20: 0.059013275429    hr@20: 0.135505607606    ,
+Test: recall@20: 0.126204097200    ndcg@20: 0.067255549780    hr@20: 0.193058568330    
+
+Beauty50 - mmin
+█████████████ BEST ████████████████
+06 Jul 06:13    INFO Best hyper idx: 11
+06 Jul 06:13    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.124559092697    ndcg@20: 0.057437414239    hr@20: 0.133474869617    ,
+Test: recall@20: 0.125892578882    ndcg@20: 0.066347636690    hr@20: 0.193566252827  
+
+Beauty50 - vigan
+█████████████ BEST ████████████████
+14 Jul 13:37    INFO Best hyper idx: 8
+14 Jul 13:37    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.123018347170    ndcg@20: 0.057151999507    hr@20: 0.131721050445    ,
+Test: recall@20: 0.124265090422    ndcg@20: 0.066212880144    hr@20: 0.190381686436
+
+############################################################################
+Risultati - Beauty90 - LGMRec
+############################################################################
+
+Beauty90 - autoenc
+█████████████ BEST ████████████████
+06 Jul 20:38    INFO Best hyper idx: 13
+06 Jul 20:38    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0, 1e-06),
+Valid: recall@20: 0.092264204926    ndcg@20: 0.042521638436    hr@20: 0.099829233396    ,
+Test: recall@20: 0.093950284004    ndcg@20: 0.050070985060    hr@20: 0.146166982046 
+
+Beauty90 - dicmor
+█████████████ BEST ████████████████
+06 Jul 09:03    INFO Best hyper idx: 0
+06 Jul 09:03    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000    ,
+Test: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000  
+
+Beauty90 - heat
+█████████████ BEST ████████████████
+08 Jul 00:35    INFO Best hyper idx: 12
+08 Jul 00:35    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.7, 0.0, 0.0),
+Valid: recall@20: 0.121818608718    ndcg@20: 0.055967311083    hr@20: 0.131674897309    ,
+Test: recall@20: 0.124369738344    ndcg@20: 0.065970628864    hr@20: 0.192966262058 
+
+Beauty90 - mean
+█████████████ BEST ████████████████
+06 Jul 16:22    INFO Best hyper idx: 11
+06 Jul 16:22    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.102554321342    ndcg@20: 0.046604680228    hr@20: 0.110767526653    ,
+Test: recall@20: 0.101506915360    ndcg@20: 0.053377659450    hr@20: 0.158766788203 
+
+Beauty90 - mmin
+█████████████ BEST ████████████████
+07 Jul 01:15    INFO Best hyper idx: 0
+07 Jul 01:15    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.1, 0.3, 0.0, 0.0),
+Valid: recall@20: 0.093699512515    ndcg@20: 0.042504989268    hr@20: 0.101398440024    ,
+Test: recall@20: 0.093987628136    ndcg@20: 0.050082598368    hr@20: 0.148843863941    
+
+Beauty90 - vigan
+█████████████ BEST ████████████████
+14 Jul 17:48    INFO Best hyper idx: 9
+14 Jul 17:48    INFO    Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(123, 2, 2, 1, 4, 0.5, 0.3, 0.0, 1e-06),
+Valid: recall@20: 0.097304422090    ndcg@20: 0.044455662613    hr@20: 0.104998384640    ,
+Test: recall@20: 0.095554488108    ndcg@20: 0.050668649176    hr@20: 0.150551529976
+
+
+############################################################################
+Risultati - Beauty50 - PGL
+############################################################################
+
+Beauty50 - autoenc
+█████████████ BEST ████████████████
+10 Jul 23:09    INFO Best hyper idx: 3
+10 Jul 23:09    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.133168960238    ndcg@20: 0.061474955696    hr@20: 0.142843956247    ,
+Test: recall@20: 0.131522899629    ndcg@20: 0.072242101417    hr@20: 0.199243088568 
+
+Beauty50 - dicmor
+
+Beauty50 - heat
+█████████████ BEST ████████████████
+10 Jul 12:32    INFO Best hyper idx: 3
+10 Jul 12:32    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.144076626260    ndcg@20: 0.066124267457    hr@20: 0.155166843587    ,
+Test: recall@20: 0.143588630824    ndcg@20: 0.077677272662    hr@20: 0.221211981354 
+
+Beauty50 - mean
+█████████████ BEST ████████████████
+07 Jul 17:57    INFO Best hyper idx: 3
+07 Jul 17:57    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.132760559927    ndcg@20: 0.061431107592    hr@20: 0.142567037430    ,
+Test: recall@20: 0.133556186696    ndcg@20: 0.072715818441    hr@20: 0.203535330226 
+
+Beauty50 - mmin
+█████████████ BEST ████████████████
+11 Jul 22:37    INFO Best hyper idx: 8
+11 Jul 22:37    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.129659034217    ndcg@20: 0.060461850086    hr@20: 0.138828633406    ,
+Test: recall@20: 0.130244308103    ndcg@20: 0.071275754654    hr@20: 0.198504638390
+
+Beauty50 - vigan
+█████████████ BEST ████████████████
+15 Jul 03:29    INFO Best hyper idx: 8
+15 Jul 03:29    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.130020786893    ndcg@20: 0.059878400081    hr@20: 0.138782480270    ,
+Test: recall@20: 0.130433824835    ndcg@20: 0.070946793094    hr@20: 0.199104629160  
+
+############################################################################
+Risultati - Beauty90 - PGL
+############################################################################
+
+Beauty90 - autoenc
+█████████████ BEST ████████████████
+13 Jul 14:28    INFO Best hyper idx: 2
+13 Jul 14:28    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.05, 'local'),
+Valid: recall@20: 0.121027518658    ndcg@20: 0.055595821632    hr@20: 0.130013384409    ,
+Test: recall@20: 0.123165670578    ndcg@20: 0.066089174519    hr@20: 0.188997092352   
+
+Beauty90 - dicmor
+█████████████ BEST ████████████████
+06 Jul 09:08    INFO Best hyper idx: 0
+06 Jul 09:08    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.005, 'local'),
+Valid: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000    ,
+Test: recall@20: 0.000000000000    ndcg@20: 0.000000000000    hr@20: 0.000000000000   
+
+Beauty90 - heat
+█████████████ BEST ████████████████
+13 Jul 07:24    INFO Best hyper idx: 3
+13 Jul 07:24    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.140345258425    ndcg@20: 0.065449059236    hr@20: 0.152443808557    ,
+Test: recall@20: 0.141975168313    ndcg@20: 0.077528456744    hr@20: 0.217842802418  
+
+Beauty90 - mean
+█████████████ BEST ████████████████
+12 Jul 18:02    INFO Best hyper idx: 13
+12 Jul 18:02    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.2, 0.1, 'local'),
+Valid: recall@20: 0.127452659569    ndcg@20: 0.059649812990    hr@20: 0.137074814234    ,
+Test: recall@20: 0.127597402265    ndcg@20: 0.070147120694    hr@20: 0.195135459454    
+
+Beauty90 - mmin
+█████████████ BEST ████████████████
+14 Jul 03:38    INFO Best hyper idx: 3
+14 Jul 03:38    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.05, 0.1, 'local'),
+Valid: recall@20: 0.123311329676    ndcg@20: 0.057547525473    hr@20: 0.132505653759    ,
+Test: recall@20: 0.124932163868    ndcg@20: 0.067939489956    hr@20: 0.191258596022    
+
+Beauty90 - vigan
+█████████████ BEST ████████████████
+15 Jul 07:32    INFO Best hyper idx: 8
+15 Jul 07:32    INFO    Parameters: ['seed', 'dropout', 'reg_weight', 'mode']=(123, 0.1, 0.1, 'local'),
+Valid: recall@20: 0.124388805607    ndcg@20: 0.058146401597    hr@20: 0.133936400978    ,
+Test: recall@20: 0.125205097738    ndcg@20: 0.068365631292    hr@20: 0.191720127383 

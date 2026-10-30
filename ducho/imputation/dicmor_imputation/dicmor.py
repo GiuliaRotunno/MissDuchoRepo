@@ -6,22 +6,26 @@ from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 from ducho.imputation.dicmor_imputation.dicmormodel import DICMORModel
 from ducho.internal.father_classes.ImputatorFather import ImputatorFather
-
-#classe figlia di ImputatorFather
+ 
+# Child class of ImputatorFather
 class DicmorImputator(ImputatorFather): 
-    def __init__(self, dataset_path, missing_visual_file, missing_textual_file, input_paths, output_paths, visual_dim, textual_dim, embd_size_v, embd_size_t, gpu_ids, seed, missing_percentage_visual, missing_percentage_textual, items_file, 
+    def __init__(self, dataset_path, missing_visual_file, missing_textual_file, input_paths, output_paths, 
+                visual_dim, textual_dim, embd_size_v, embd_size_t, gpu_ids, seed, 
+                missing_percentage_visual, missing_percentage_textual, items_file, 
                 num_epochs, learning_rate, batch_size, log_p_weight, n_flow, n_block, rcan_blocks):
+        
         self.dataset_path = dataset_path
-        self.missing_visual_file = missing_visual_file
-        self.missing_textual_file = missing_textual_file
+        self.missing_visual_file = missing_visual_file    # missing_visual_file: TSV file with missing visual item IDs
+        self.missing_textual_file = missing_textual_file  # missing_textual_file: TSV file with missing textual item IDs
         self.input_paths = input_paths
         self.output_paths = output_paths
         
-        # Assicura che le dimensioni siano int
+        # Ensures dimensions are int
         if isinstance(visual_dim, (tuple, list)):
             visual_dim = visual_dim[0]
         if isinstance(textual_dim, (tuple, list)):
             textual_dim = textual_dim[0]
+
         self.visual_dim = int(visual_dim)
         self.textual_dim = int(textual_dim)
         self.embd_size_v = embd_size_v      
@@ -40,20 +44,19 @@ class DicmorImputator(ImputatorFather):
         self.rcan_blocks = rcan_blocks
         self.device = torch.device(f'cuda:{gpu_ids[0]}' if len(gpu_ids) > 0 and torch.cuda.is_available() else 'cpu')
 
-        # Statistiche per normalizzazione
+        # Statistics for normalization
         self.visual_min = None
         self.visual_max = None
         self.textual_min = None
         self.textual_max = None
-    
-    #denormalize?
 
-    def train_dicmor(self, visual_features, textual_features, num_epochs, batch_size, lr, log_p_weight):   #dicmor num_epochs=8, batch_size=16, lr=0.0001
-        # Normalizza
+
+    def train_dicmor(self, visual_features, textual_features, num_epochs, batch_size, lr, log_p_weight):   # Parameters: num_epochs=8, batch_size=16, lr=0.0001
+        # Normalize
         visual_norm, textual_norm = self.normalize_data(visual_features, textual_features)
         # Setup optimizers
         self.model.setup_optimizers(lr=lr)
-        # Crea dataloader
+        # Create dataloader
         dataset = TensorDataset(visual_norm, textual_norm)
         dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, drop_last=True)        
         # Training loop
@@ -64,11 +67,11 @@ class DicmorImputator(ImputatorFather):
             epoch_loss_rec = 0
             num_batches = 0
             for visual_batch, textual_batch in dataloader:
-                # Simula missing modality (alterna tra textual e visual missing)
+                # Simulate missing modality
                 if num_batches % 2 == 0:
-                    num_modal = 1  # Simula una modalità disponibile
+                    num_modal = 1  # Simulate an available modality
                 else:
-                    num_modal = 2  # Entrambe disponibili
+                    num_modal = 2  # Both available
                 # Optimize
                 loss_dict = self.model.optimize_parameters(visual_batch, textual_batch, num_modal, log_p_weight=log_p_weight)
                 epoch_loss_total += loss_dict['loss_total']
@@ -80,25 +83,25 @@ class DicmorImputator(ImputatorFather):
                 print(f"Epoch [{epoch+1}/{num_epochs}] - Total Loss: {avg_loss_total:.4f}, Rec Loss: {avg_loss_rec:.4f}")
     
     def impute_missing(self, visual_folder, textual_folder, missing_visual, missing_textual, output_visual_folder, output_textual_folder):
-        #Imputa le modalità mancanti usando il modello trainato, imputa in embedding space (128 dim), non nello spazio originale        
+        #Impute missing modalities using the trained model, impute in embedding space (128 dim), not in the original space     
         os.makedirs(output_visual_folder, exist_ok=True)
         os.makedirs(output_textual_folder, exist_ok=True)
         self.model.eval()
         with torch.no_grad():
-            # Imputa missing textual da visual
+            # Impute missing textual from visual
             for item in tqdm(missing_textual, desc="Textual imputation"):
                 if item in missing_visual:
-                    # Usa la media globale invece di zeri
+                    # Use the global average instead of zeros
                     textual_imputed = self.textual_global_mean.cpu().numpy()
-                    #textual_imputed = np.zeros(self.textual_dim, dtype=np.float32) # Entrambe mancanti -> usa zeros
+                    #textual_imputed = np.zeros(self.textual_dim, dtype=np.float32) # Both missing -> use zeros
                 else:
-                    # Carica visual e imputa textual
+                    # Load visual and impute textual
                     visual_path = os.path.join(visual_folder, item + ".npy")
                     visual_feat = np.load(visual_path)
                     visual_tensor = torch.from_numpy(visual_feat).float()
-                    # Normalizza
+                    # Normalize
                     visual_norm = (visual_tensor - self.visual_min.cpu()) / (self.visual_max.cpu() - self.visual_min.cpu() + 1e-8)
-                    # Imputa usando DiCMoR (restituisce embedding)
+                    # Impute using DiCMoR
                     textual_embd_imputed = self.model.impute_textual(visual_norm)
                     #textual_imputed = textual_embd_imputed.cpu().numpy()
                     textual_imputed_tensor = self.denormalize(textual_embd_imputed.unsqueeze(0), 'textual').squeeze(0)
@@ -106,20 +109,20 @@ class DicmorImputator(ImputatorFather):
                 output_path = os.path.join(output_textual_folder, item)
                 np.save(output_path, textual_imputed)
             
-            # Imputa missing visual da textual
+            # Impute missing visual from textual
             for item in tqdm(missing_visual, desc="Visual imputation"):
                 if item in missing_textual:
-                    # Usa la media globale invece di zeri
+                    # Use the global average instead of zeros
                     visual_imputed = self.visual_global_mean.cpu().numpy()
-                    #visual_imputed = np.zeros(self.visual_dim, dtype=np.float32) # Entrambe mancanti -> usa zeros
+                    #visual_imputed = np.zeros(self.visual_dim, dtype=np.float32) # Both missing -> use zeros
                 else:
-                    # Carica textual e imputa visual
+                    # Load textual and impute visual
                     textual_path = os.path.join(textual_folder, item + ".npy")
                     textual_feat = np.load(textual_path)
                     textual_tensor = torch.from_numpy(textual_feat).float()
-                    # Normalizza
+                    # Normalize
                     textual_norm = (textual_tensor - self.textual_min.cpu()) / (self.textual_max.cpu() - self.textual_min.cpu() + 1e-8)
-                    # Imputa usando DiCMoR (restituisce embedding)
+                    # Impute using DiCMoR
                     visual_embd_imputed = self.model.impute_visual(textual_norm)
                     #visual_imputed = visual_embd_imputed.cpu().numpy()
                     visual_imputed_tensor = self.denormalize(visual_embd_imputed.unsqueeze(0), 'visual').squeeze(0)
@@ -128,12 +131,14 @@ class DicmorImputator(ImputatorFather):
                 np.save(output_path, visual_imputed)
         print("IMPUTATION COMPLETED!")   
 
+
     def impute(self):
         
         self.set_seed()
 
-        # Crea il modello DiCMoR
-        self.model = DICMORModel(visual_dim=self.visual_dim, textual_dim=self.textual_dim, embd_size_v=self.embd_size_v, embd_size_t=self.embd_size_t, n_flow=self.n_flow, n_block=self.n_block, rcan_blocks=self.rcan_blocks, gpu_ids=self.gpu_ids)
+        # Create DiCMoR model
+        self.model = DICMORModel(visual_dim=self.visual_dim, textual_dim=self.textual_dim, embd_size_v=self.embd_size_v, embd_size_t=self.embd_size_t,
+                                n_flow=self.n_flow, n_block=self.n_block, rcan_blocks=self.rcan_blocks, gpu_ids=self.gpu_ids)
         
         output_visual = self.output_paths[0] + '/dicmor'
         output_textual = self.output_paths[1] + '/dicmor'
@@ -142,7 +147,7 @@ class DicmorImputator(ImputatorFather):
             errors = {'visual':[], 'textual':[]}
             for percentage_visual, percentage_textual in zip(self.missing_percentage_visual, self.missing_percentage_textual):
               try: 
-                missing_visual = self.compute_artificial_missing_items(self.dataset_path, percentage_visual, self.items_file, self.seed, file_name=f"artificial_missing_visual_file_{percentage_visual}_dicmor")  #funzione in simple_imputation
+                missing_visual = self.compute_artificial_missing_items(self.dataset_path, percentage_visual, self.items_file, self.seed, file_name=f"artificial_missing_visual_file_{percentage_visual}_dicmor")  
                 result_path_percentage_visual = os.path.join(output_visual, f"{percentage_visual}")
                 os.makedirs(result_path_percentage_visual, exist_ok=True)   
                 missing_visual_npy = []
@@ -154,7 +159,7 @@ class DicmorImputator(ImputatorFather):
                     if file.endswith('.npy') and (file not in missing_visual_npy): 
                        np.save(f'{visual_folder}/{file}', np.load(os.path.join(self.input_paths[0], file)))
             
-                missing_textual = self.compute_artificial_missing_items(self.dataset_path, percentage_textual, self.items_file, self.seed+1, file_name=f"artificial_missing_textual_file_{percentage_textual}_dicmor")  #funzione in simple_imputation
+                missing_textual = self.compute_artificial_missing_items(self.dataset_path, percentage_textual, self.items_file, self.seed+1, file_name=f"artificial_missing_textual_file_{percentage_textual}_dicmor")
                 result_path_percentage_textual = os.path.join(output_textual, f"{percentage_textual}")
                 os.makedirs(result_path_percentage_textual, exist_ok=True)    
                 missing_textual_npy = [] 
@@ -166,14 +171,14 @@ class DicmorImputator(ImputatorFather):
                     if file.endswith('.npy') and (file not in missing_textual_npy):
                        np.save(f'{textual_folder}/{file}', np.load(os.path.join(self.input_paths[1], file)))
                 
-                # 1. Carica dati
+                # Load data
                 visual_features, textual_features, all_present = self.load_data(visual_folder, textual_folder)
-                # 2. Train DiCMoR
+                # Train DiCMoR
                 self.train_dicmor(visual_features, textual_features, num_epochs=self.num_epochs , batch_size=self.batch_size, lr=self.learning_rate, log_p_weight=self.log_p_weight)
-                # 3. Imputa missing modalities
+                # Impute missing modalities
                 self.impute_missing(visual_folder, textual_folder, missing_visual, missing_textual, result_path_percentage_visual, result_path_percentage_textual)
 
-                # Calcola errore di ricostruzione
+                # Compute recontruction error
                 mse_visual, cosine_sim_visual = self.compute_reconstruction_errors_for_modality(self.input_paths[0], result_path_percentage_visual, missing_visual_npy)
                 errors['visual'].append((percentage_visual, mse_visual, cosine_sim_visual))
                 mse_textual, cosine_sim_textual = self.compute_reconstruction_errors_for_modality(self.input_paths[1], result_path_percentage_textual, missing_textual_npy)
@@ -193,9 +198,9 @@ class DicmorImputator(ImputatorFather):
             missing_textual = set(pd.read_csv(missing_textual_path, sep='\t', header=None)[0].to_list()) 
             textual_folder = self.input_paths[1]
 
-            # 1. Carica dati
+            # Load data
             visual_features, textual_features, all_present = self.load_data(visual_folder, textual_folder)
-            # 2. Train DiCMoR
+            # Train DiCMoR
             self.train_dicmor(visual_features, textual_features, num_epochs=self.num_epochs , batch_size=self.batch_size, lr=self.learning_rate, log_p_weight=self.log_p_weight)
-            # 3. Imputa missing modalities
+            # Impute missing modalities
             self.impute_missing(visual_folder, textual_folder, missing_visual, missing_textual, output_visual, output_textual)

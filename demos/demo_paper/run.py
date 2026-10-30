@@ -50,4 +50,4 @@ if __name__ == '__main__':
         os.remove('./demos/demo_paper/MMFashion.pth')
     main()
 
-# PYTHONPATH=. python demos/demo_paper/run.py
+# Command to run the code:  PYTHONPATH=. python demos/demo_paper/run.py

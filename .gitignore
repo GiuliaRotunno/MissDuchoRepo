@@ -61,3 +61,9 @@ docs/_build/_doctrees
 
 datasets/
 datasets.zip
+
+._indexed/
+*.code-workspace
+.git_disabled/
+
+MMRec/MMRec/data/

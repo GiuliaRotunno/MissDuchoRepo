@@ -1,4 +1,4 @@
-#DiCMoR Networks Adapted for Feature Vectors https://github.com/mdswyz/DiCMoR
+#DiCMoR networks adapted for feature vectors form https://github.com/mdswyz/DiCMoR
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -8,7 +8,10 @@ from scipy import linalg as la
 logabs = lambda x: torch.log(torch.abs(x))
 
 # RCAN - Residual Channel Attention Network 
-class CALayer(nn.Module): #channel Attention Layer 
+
+# Channel Attention Layer 
+class CALayer(nn.Module):
+
     def __init__(self, num_channels, reduction=16): 
         super().__init__()
         self.avg_pool = nn.AdaptiveAvgPool1d(1)
@@ -24,7 +27,9 @@ class CALayer(nn.Module): #channel Attention Layer
         y = self.conv_du(y)
         return x * y
 
-class RCAB(nn.Module): #Residual Channel Attention Block
+# Residual Channel Attention Block
+class RCAB(nn.Module): 
+
     def __init__(self, num_channels, reduction, res_scale):
         super().__init__()
         body = [
@@ -41,7 +46,9 @@ class RCAB(nn.Module): #Residual Channel Attention Block
         res += x
         return res
 
-class RCANGroup(nn.Module): #Group of RCAB blocks
+#Group of RCAB blocks
+class RCANGroup(nn.Module): 
+
     def __init__(self, num_channels, num_blocks, reduction, res_scale=1.0):
         super().__init__()
         body = []
@@ -55,9 +62,11 @@ class RCANGroup(nn.Module): #Group of RCAB blocks
         res += x
         return res
 
-
 # Glow Components - Normalizing Flow 
-class ActNorm(nn.Module): #Activation Normalization
+
+# Activation Normalization
+class ActNorm(nn.Module): 
+
     def __init__(self, in_channel, logdet=True):
         super().__init__()
         self.loc = nn.Parameter(torch.zeros(1, in_channel, 1, 1))
@@ -88,8 +97,9 @@ class ActNorm(nn.Module): #Activation Normalization
     def reverse(self, output):
         return output / self.scale - self.loc
 
+#Invertible 1x1 Convolution with LU decomposition
+class InvConv2dLU(nn.Module): 
 
-class InvConv2dLU(nn.Module): #Invertible 1x1 Convolution with LU decomposition
     def __init__(self, in_channel):
         super().__init__()
         weight = np.random.randn(in_channel, in_channel)
@@ -133,8 +143,9 @@ class InvConv2dLU(nn.Module): #Invertible 1x1 Convolution with LU decomposition
         weight = self.calc_weight()
         return F.conv2d(output, weight.squeeze().inverse().unsqueeze(2).unsqueeze(3))
     
-
+# 2D Convolution
 class InvConv2d(nn.Module):
+
     def __init__(self, in_channel):
         super().__init__()
         weight = torch.randn(in_channel, in_channel)
@@ -151,7 +162,9 @@ class InvConv2d(nn.Module):
     def reverse(self, output):
         return F.conv2d(output, self.weight.squeeze().inverse().unsqueeze(2).unsqueeze(3))
 
-class ZeroConv2d(nn.Module):  #Zero-initialized Convolution
+# Zero-initialized 2D Convolution
+class ZeroConv2d(nn.Module):
+
     def __init__(self, in_channel, out_channel):
         super().__init__()
         self.conv = nn.Conv2d(in_channel, out_channel, 1, padding=0)
@@ -164,8 +177,9 @@ class ZeroConv2d(nn.Module):  #Zero-initialized Convolution
         out = out * torch.exp(self.scale * 3)
         return out
 
+# Affine Coupling Layer
+class AffineCoupling(nn.Module): 
 
-class AffineCoupling(nn.Module): #Affine Coupling Layer
     def __init__(self, in_channel, filter_size=64, affine=True):
         super().__init__()
         self.affine = affine
@@ -212,8 +226,9 @@ class AffineCoupling(nn.Module): #Affine Coupling Layer
         
         return torch.cat([out_a, in_b], 1)
 
+# Flow step
+class Flow(nn.Module):
 
-class Flow(nn.Module):  #Flow step
     def __init__(self, in_channel, affine=True, conv_lu=True):
         super().__init__()
         self.actnorm = ActNorm(in_channel)
@@ -240,20 +255,23 @@ class Flow(nn.Module):  #Flow step
         input = self.actnorm.reverse(input)
         return input
 
-
-def gaussian_log_p(x, mean, log_sd): #Gaussian log probability
+# Gaussian log probability
+def gaussian_log_p(x, mean, log_sd): 
     return -0.5 * log(2 * pi) - log_sd - 0.5 * (x - mean) ** 2 / torch.exp(2 * log_sd)
 
-def gaussian_sample(eps, mean, log_sd): #Sample from Gaussian
+# Sample from Gaussian
+def gaussian_sample(eps, mean, log_sd): 
     return mean + torch.exp(log_sd) * eps
 
-class Block(nn.Module): #Glow Block 
+# Glow Block 
+class Block(nn.Module): 
+
     def __init__(self, in_channel, n_flow, affine=True, conv_lu=True):
         super().__init__()
         self.flows = nn.ModuleList()
         for i in range(n_flow):
             self.flows.append(Flow(in_channel, affine=affine, conv_lu=conv_lu))     
-        self.prior = ZeroConv2d(in_channel, in_channel * 2) # Prior semplificato: non condizionato su classe
+        self.prior = ZeroConv2d(in_channel, in_channel * 2) # Simplified prior: not conditioned on the class
 
     def forward(self, input):
         b_size, n_channel, height, width = input.shape
@@ -264,7 +282,7 @@ class Block(nn.Module): #Glow Block
             out, det = flow(out)
             logdet = logdet + det
         
-        # Prior non condizionato
+        # Not conditioned prior
         zero = torch.zeros_like(out)
         mean, log_sd = self.prior(zero).chunk(2, 1)
         log_p = gaussian_log_p(out, mean, log_sd)
@@ -273,25 +291,28 @@ class Block(nn.Module): #Glow Block
         
         return out, logdet, log_p, z_new
 
-    def reverse(self, output, eps=None, reconstruct=False): #Reverse flow per ricostruzione
+    # Reverse flow for reconstruction
+    def reverse(self, output, eps=None, reconstruct=False): 
         input = output
         
         if reconstruct:
-            input = output # Usa direttamente output per ricostruzione
+            input = output # Use output directly for reconstruction
         else:
-            # Sample da prior
+            # Sample from prior
             zero = torch.zeros_like(input)
             mean, log_sd = self.prior(zero).chunk(2, 1)
             z = gaussian_sample(eps, mean, log_sd)
             input = z
         
-        # Reverse attraverso i flow
+        # Reverse through the flows
         for flow in self.flows[::-1]:
             input = flow.reverse(input)
         
         return input
+  
+# Glow: Generative Flow  (Simplified prior: not conditioned on the class)
+class Glow(nn.Module):
 
-class Glow(nn.Module):  # Glow: Generative Flow,  Semplificazione: prior non condizionato su classe
     def __init__(self, in_channel, n_flow, n_block, affine=True, conv_lu=True):
         super().__init__()
         self.blocks = nn.ModuleList()
@@ -323,6 +344,7 @@ class Glow(nn.Module):  # Glow: Generative Flow,  Semplificazione: prior non con
         return input
 
 # Helper Functions
+
 def weights_init(m):
     classname = m.__class__.__name__
     if classname.find('Conv') != -1:
@@ -337,13 +359,15 @@ def weights_init(m):
         nn.init.constant_(m.weight, 1)
         nn.init.constant_(m.bias, 0)
 
-def create_glow(in_channel, n_flow=32, n_block=1, gpu_ids=[]): #Crea Glow network
+# Create Glow network
+def create_glow(in_channel, n_flow=32, n_block=1, gpu_ids=[]): 
     net = Glow(in_channel, n_flow, n_block, affine=True, conv_lu=False)
     if len(gpu_ids) > 0 and torch.cuda.is_available():
         net = net.cuda(gpu_ids[0])
     return net
 
-def create_rcan_refiner(in_channel, num_blocks=20, reduction=16, gpu_ids=[]): #Crea RCAN refinement network
+# Create RCAN refinement network
+def create_rcan_refiner(in_channel, num_blocks=20, reduction=16, gpu_ids=[]): 
     net = nn.Sequential(
         nn.Conv1d(in_channel, in_channel*2, 1),
         RCANGroup(num_channels=in_channel*2, num_blocks=num_blocks, reduction=reduction),

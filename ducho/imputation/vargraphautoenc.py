@@ -10,15 +10,15 @@ from torch.utils.data import DataLoader, TensorDataset
 import torch.nn.functional as F
 from ducho.internal.father_classes.ImputatorFather import ImputatorFather
 
-# VARGRAPHAUTOENC -> uses a variational graph-based encoder operating on the item-item co-purchase graph
+# VARGRAPHAUTOENC: uses a variational graph-based encoder operating on the item-item co-purchase graph.
 
 class VariationalGraphEncoderVisual2Textual(nn.Module):
     def __init__(self):
         super(VariationalGraphEncoderVisual2Textual, self).__init__()       
-        self.conv1 = GCNConv(2048, 1024)  # Encoder condiviso
-        self.conv_mu = GCNConv(1024, 512)  # due teste (mu, logvar)
+        self.conv1 = GCNConv(2048, 1024) 
+        self.conv_mu = GCNConv(1024, 512) 
         self.conv_logvar = GCNConv(1024, 512)
-        self.decoder = nn.Sequential(  # Decoder invariato
+        self.decoder = nn.Sequential(
             nn.Linear(512, 512),
             nn.LeakyReLU(),
             nn.Linear(512, 768),
@@ -76,10 +76,12 @@ class VariationalGraphEncoderTextual2Visual(nn.Module):
         out = self.decoder(z)
         return out, mu, logvar
 
-#classe figlia di ImputatorFather
+# Child class of ImputatorFather
 class VargraphautoencImputator(ImputatorFather):
 
-    def __init__(self, dataset_path, missing_visual_file, missing_textual_file, input_paths, output_paths, train_path, top_k, seed, missing_percentage_visual, missing_percentage_textual, items_file, num_epochs, learning_rate, batch_size, beta_visual, beta_textual):
+    def __init__(self, dataset_path, missing_visual_file, missing_textual_file, input_paths, output_paths, train_path, top_k, seed,
+                missing_percentage_visual, missing_percentage_textual, items_file, num_epochs, learning_rate, batch_size, 
+                beta_visual, beta_textual):
         super().__init__()
         self.missing_visual_file = missing_visual_file
         self.dataset_path = dataset_path
@@ -98,19 +100,20 @@ class VargraphautoencImputator(ImputatorFather):
         self.beta_visual = beta_visual
         self.beta_textual = beta_textual
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    
-    def _train_variational_graph_autoencoder_textual(self, visual_normalized, textual_normalized, adj):  #Addestra il variational graph autoencoder per ricostruire textual da visual
-        
+
+    # Train the variational graphautoencoder to reconstruct textual from visual
+    def _train_variational_graph_autoencoder_textual(self, visual_normalized, textual_normalized, adj):
+
         model = VariationalGraphEncoderVisual2Textual()
         model.to(self.device)
-        optimizer = optim.Adam(model.parameters(), lr=self.learning_rate) #lr=1e-4
+        optimizer = optim.Adam(model.parameters(), lr=self.learning_rate)           # Parameters: lr=1e-4
         items = torch.arange(visual_normalized.shape[0])
         dataset = TensorDataset(items, textual_normalized)
-        dataloader = DataLoader(dataset,batch_size=self.batch_size, shuffle=True) #batch_size=32
-        beta = self.beta_textual #1e-3
+        dataloader = DataLoader(dataset,batch_size=self.batch_size, shuffle=True)   # Parameters: batch_size=32
+        beta = self.beta_textual                                                    # Parameters: beta_textual=1e-3
 
         cumulative_loss = 0       
-        for epoch in range(self.num_epochs): #num_epochs=1000
+        for epoch in range(self.num_epochs):                                        # Parameters: num_epochs=1000
             for items_id, targets in dataloader:
                 outputs, mu, logvar = model(visual_normalized, adj.to(self.device))
                 recon_loss = F.binary_cross_entropy(outputs[items_id], targets, reduction='mean')
@@ -127,8 +130,9 @@ class VargraphautoencImputator(ImputatorFather):
 
         model.eval()
         return model
- 
-    def _train_variational_graph_autoencoder_visual(self, textual_normalized, visual_normalized, adj):  #Addestra il variational graph autoencoder per ricostruire visual da textual
+
+    # Train the variational graphautoencoder to reconstruct visual from textual
+    def _train_variational_graph_autoencoder_visual(self, textual_normalized, visual_normalized, adj):
         
         model = VariationalGraphEncoderTextual2Visual()
         model.to(self.device)
@@ -136,7 +140,7 @@ class VargraphautoencImputator(ImputatorFather):
         items = torch.arange(visual_normalized.shape[0])
         dataset = TensorDataset(items, visual_normalized)
         dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=True)
-        beta = self.beta_visual #1e-3
+        beta = self.beta_visual                                                      # Parameters: beta_visual=1e-3
 
         cumulative_loss = 0
         for epoch in range(self.num_epochs):
@@ -156,11 +160,12 @@ class VargraphautoencImputator(ImputatorFather):
 
         model.eval()
         return model
-    
+
+    # Impute textual missing modality 
     def _impute_textual_modality(self, missing_textual_indexed, missing_visual_indexed, 
                                  visual_embeddings_folder_indexed, all_present, train_indexed_path,
                                  model_impute_textual, visual_normalized, visual_min, visual_max,
-                                 textual_min, textual_max, textual_global_mean, items_map, output_path):  #Imputa la modalità textual mancante
+                                 textual_min, textual_max, textual_global_mean, items_map, output_path):
         
         for miss in missing_textual_indexed:
             if miss in missing_visual_indexed:
@@ -189,11 +194,12 @@ class VargraphautoencImputator(ImputatorFather):
                 output = (output * (textual_max - textual_min)) + textual_min
                 miss_original = self.inverse_mapping(items_map, miss)
                 np.save(os.path.join(output_path, f'{miss_original}.npy'), output.detach().cpu().numpy())
-    
+
+    # Impute visual missing modality
     def _impute_visual_modality(self, missing_visual_indexed, missing_textual_indexed,
                                 textual_embeddings_folder_indexed, all_present, train_indexed_path,
                                 model_impute_visual, textual_normalized, textual_min, textual_max,
-                                visual_min, visual_max, visual_global_mean, items_map, output_path):   #Imputa la modalità visual mancante
+                                visual_min, visual_max, visual_global_mean, items_map, output_path):
         
         for miss in missing_visual_indexed:
             if miss in missing_textual_indexed:
@@ -237,7 +243,7 @@ class VargraphautoencImputator(ImputatorFather):
             
             for percentage_visual, percentage_textual in zip(self.missing_percentage_visual, self.missing_percentage_textual):
               try:  
-                # Crea missing items artificiali e folder
+                # Create artificial missing items and folders
                 missing_visual_items = self.compute_artificial_missing_items(self.dataset_path, percentage_visual, self.items_file, self.seed, file_name=f"artificial_missing_visual_file_{percentage_visual}_vargraphautoenc")
                 result_path_percentage_visual = os.path.join(output_visual, f"{percentage_visual}")
                 os.makedirs(result_path_percentage_visual, exist_ok=True)   
@@ -252,32 +258,28 @@ class VargraphautoencImputator(ImputatorFather):
                 textual_folder = f"{self.dataset_path}/non_masked_textual_folder_{percentage_textual}"
                 self.create_non_masked_folder(self.input_paths[1], missing_textual_npy, textual_folder)
 
-                # Mapping e indicizzazione
+                # Mapping and indexing
                 visual_embeddings_folder_indexed, missing_visual_indexed, items_map, train_indexed_path = self.mapping(self.dataset_path, self.train_path, visual_folder, missing_visual_items, modality='visual')
                 missing_visual_indexed = set(pd.read_csv(missing_visual_indexed, sep='\t', header=None)[0].to_list())
                 textual_embeddings_folder_indexed, missing_textual_indexed, _, _ = self.mapping(self.dataset_path, self.train_path, textual_folder, missing_textual_items, modality='textual')
                 missing_textual_indexed = set(pd.read_csv(missing_textual_indexed, sep='\t', header=None)[0].to_list())
 
-                # Carica features
+                # Load features
                 (visual_features, textual_features, visual_shape, textual_shape, all_present, inner_map_item) = self.load_indexed_features(visual_embeddings_folder_indexed, textual_embeddings_folder_indexed, missing_visual_indexed, missing_textual_indexed)
-
-                # Prepara matrice di adiacenza
+                # Prepare adjacency matrix
                 adj = self.prepare_adjacency_matrix(train_indexed_path, all_present)
-                
-                # Normalizza
+                # Normalize
                 (visual_normalized, textual_normalized, visual_min, visual_max, textual_min, textual_max, visual_global_mean, textual_global_mean) = self.normalize_features(visual_features, textual_features)
-                
-                # Addestra modelli
+                # Train models
                 model_impute_textual = self._train_variational_graph_autoencoder_textual(visual_normalized, textual_normalized, adj)
                 model_impute_visual = self._train_variational_graph_autoencoder_visual(textual_normalized, visual_normalized, adj)
-
-                # Imputa
+                # Impute
                 self._impute_textual_modality(missing_textual_indexed, missing_visual_indexed, visual_embeddings_folder_indexed, all_present, train_indexed_path, model_impute_textual, visual_normalized,
                                               visual_min, visual_max, textual_min, textual_max, textual_global_mean, items_map, result_path_percentage_textual)
                 self._impute_visual_modality(missing_visual_indexed, missing_textual_indexed, textual_embeddings_folder_indexed, all_present, train_indexed_path, model_impute_visual, textual_normalized,
                                              textual_min, textual_max, visual_min, visual_max, visual_global_mean, items_map, result_path_percentage_visual)
             
-                # Calcola errore di ricostruzione
+                # Compute reconstruction error
                 mse_visual, cosine_sim_visual = self.compute_reconstruction_errors_for_modality(self.input_paths[0], result_path_percentage_visual, missing_visual_npy)
                 errors['visual'].append((percentage_visual, mse_visual, cosine_sim_visual))
                 mse_textual, cosine_sim_textual = self.compute_reconstruction_errors_for_modality(self.input_paths[1], result_path_percentage_textual, missing_textual_npy)
@@ -290,32 +292,27 @@ class VargraphautoencImputator(ImputatorFather):
        
         else:
 
-            # Caso reale (non artificiale)
             missing_visual_items = self.compute_missing_items(self.dataset_path, self.missing_visual_file)
             missing_textual_items = self.compute_missing_items(self.dataset_path, self.missing_textual_file)
             visual_folder = self.input_paths[0]
             textual_folder = self.input_paths[1]
 
-            # Mapping e indicizzazione
+            # Mapping and indexing
             visual_embeddings_folder_indexed, missing_visual_indexed, items_map, train_indexed_path = self.mapping(self.dataset_path, self.train_path, visual_folder, missing_visual_items, modality='visual')
             missing_visual_indexed = set(pd.read_csv(missing_visual_indexed, sep='\t', header=None)[0].to_list())
             textual_embeddings_folder_indexed, missing_textual_indexed, _, _ = self.mapping(self.dataset_path, self.train_path, textual_folder, missing_textual_items, modality='textual')
             missing_textual_indexed = set(pd.read_csv(missing_textual_indexed, sep='\t', header=None)[0].to_list())
 
-            # Carica features
+            # Load features
             (visual_features, textual_features, visual_shape, textual_shape, all_present, inner_map_item) = self.load_indexed_features(visual_embeddings_folder_indexed, textual_embeddings_folder_indexed, missing_visual_indexed, missing_textual_indexed)
-            
-            # Prepara matrice di adiacenza
+            # Prepare adjacency matrix
             adj = self.prepare_adjacency_matrix(train_indexed_path, all_present)
-            
-            # Normalizza
+            # Normalize
             (visual_normalized, textual_normalized, visual_min, visual_max, textual_min, textual_max, visual_global_mean, textual_global_mean) = self.normalize_features(visual_features, textual_features)
-            
-            # Addestra modelli
+            # Train models
             model_impute_textual = self._train_variational_graph_autoencoder_textual(visual_normalized, textual_normalized, adj)
             model_impute_visual = self._train_variational_graph_autoencoder_visual(textual_normalized, visual_normalized, adj)
-            
-            # Imputa
+            # Impute
             self._impute_textual_modality(missing_textual_indexed, missing_visual_indexed, visual_embeddings_folder_indexed, all_present, train_indexed_path, model_impute_textual, visual_normalized,
                                           visual_min, visual_max, textual_min, textual_max, textual_global_mean, items_map, output_textual)
             self._impute_visual_modality(missing_visual_indexed, missing_textual_indexed, textual_embeddings_folder_indexed, all_present, train_indexed_path, model_impute_visual, textual_normalized,

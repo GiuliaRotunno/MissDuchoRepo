@@ -33,4 +33,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# PYTHONPATH=. python demos/demo_elliot/run.py
+# Command to run the code:  PYTHONPATH=. python demos/demo_elliot/run.py

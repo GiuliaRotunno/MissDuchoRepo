@@ -66,7 +66,11 @@ Hyperparameter search scripts: `grid_search.py` and `grid_search_crossmodal.py`.
 
 The following files are **not** included in the repository because of their size:
 
-- Datasets and embeddings (e.g. `MMRec/MMRec/data/`): one folder per dataset (`Baby`, `Beauty`, `Office`, `Sports`, and the variants `Baby50`, `Baby90`, `Beauty50`, `Beauty90`), each containing the processed files and the embeddings generated for the experiments. They are not included in the repository because of their size. TODO: decide how to share them.
+- `local/`: contains the data and embeddings used by the demos in `demos/`. It is not included in the repository because of its size. 
+TODO: decide how to share it.
+- `MMRec/MMRec/data/`: one folder per dataset (`Baby`, `Beauty`, `Office`, `Sports`, and the variants `Baby50`, `Baby90`, `Beauty50`, `Beauty90`), each containing the processed files and the embeddings generated for the experiments. They are not included in the repository because of their size. 
+TODO: decide how to share them.
+
 
 
 ## Third-party code
